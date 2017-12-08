@@ -6,7 +6,7 @@
 #    By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/08 06:50:34 by wblondel     #+#   ##    ##    #+#        #
-#    Updated: 2017/12/08 07:38:16 by wblondel    ###    #+. /#+    ###.fr      #
+#    Updated: 2017/12/08 07:51:43 by wblondel    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -22,7 +22,7 @@ CPPFLAGS = -I$(INC_PATH)
 LDFLAGS = -L$(LIBFT_PATH) -L$(LIBMLX_PATH)
 
 ## Libraries to link into the executable
-LDLIBS = -lft -lmlx
+LDLIBS = -lft -lmlx -lm
 
 ## Name of the executable
 NAME = mlx
