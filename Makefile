@@ -6,7 +6,7 @@
 #    By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/08 06:50:34 by wblondel     #+#   ##    ##    #+#        #
-#    Updated: 2017/12/08 07:06:23 by wblondel    ###    #+. /#+    ###.fr      #
+#    Updated: 2017/12/08 07:18:28 by wblondel    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -108,3 +108,5 @@ re: fclean
 norme:
 	norminette $(SRC)
 	norminette $(INC_PATH)
+	norminette $(LIBFT_PATH)/*.h
+	norminette $(LIBFT_PATH)/*.c
