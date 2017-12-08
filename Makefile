@@ -6,7 +6,7 @@
 #    By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/08 06:50:34 by wblondel     #+#   ##    ##    #+#        #
-#    Updated: 2017/12/08 07:18:28 by wblondel    ###    #+. /#+    ###.fr      #
+#    Updated: 2017/12/08 07:38:16 by wblondel    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -85,7 +85,7 @@ ifeq ($(shell $(MAKE) --question -C ./$(LIBFT_PATH) ; echo $$?), 1)
 .PHONY: $(LIBFT_PATH)/$(LIBFT_PATH).a
 endif
 ifeq ($(shell $(MAKE) --question -C ./$(LIBMLX_PATH) ; echo $$?), 1)
-.PHONY: $(LIMLX_PATH)/$(LIBMLX_PATH).a
+.PHONY: $(LIBMLX_PATH)/$(LIBMLX_PATH).a
 endif
 
 .PHONY: clean
