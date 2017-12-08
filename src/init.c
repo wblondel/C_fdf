@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:36:18 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/08 10:16:13 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/08 13:41:41 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,20 +28,17 @@
 ** This way, the array will have the exact same size as your window, and each index
 ** will represent one complete color of a pixel !
 */
-t_mlx		init_mlx(void)
+t_view		*init_view(void)
 {
-	t_mlx mlx;
+	t_view	*v;
 
-	if ((mlx.mlx_ptr = mlx_init()) == NULL)
+	if ((v = (t_view *)ft_memalloc(sizeof(t_view))) == NULL)
+		error("error: malloc() for v failed");
+	if ((v->mlx = mlx_init()) == NULL)
 		error("error: mlx_init() failed");
-	if ((mlx.win = mlx_new_window(mlx.mlx_ptr, W_WIDTH, W_HEIGHT,
+	if ((v->window = mlx_new_window(v->mlx, W_WIDTH, W_HEIGHT,
 						"FdF Reader")) == NULL)
 		error("error: mlx_new_window() failed");
-	if ((mlx.img.img_ptr = mlx_new_image(mlx.mlx_ptr, W_WIDTH, W_HEIGHT))
-						== NULL)
-		error("error: mlx_new_image() failed");
-	if ((mlx.img.data = (int *)mlx_get_data_addr(mlx.img.img_ptr, &mlx.img.bpp,
-						&mlx.img.size_l, &mlx.img.endian)) == NULL)
-		error("error: mlx_get_data_addr() failed");
-	return (mlx);
+	keys_init(&v->key);
+	return (v);
 }

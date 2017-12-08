@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   image.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/08 05:55:32 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/08 13:45:10 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/08 13:40:45 by wblondel     #+#   ##    ##    #+#       */
+/*   Updated: 2017/12/08 13:50:12 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-/*
-** Prints an error message and exit with error code 1.
-*/
-
-void 	error(char *msg)
+void	create_image(void *mlx, t_img *image)
 {
-	ft_putendl(msg);
-	exit(EXIT_FAILURE);
-}
-
-int		main(int argc, char **argv)
-{
-	t_view	*v;
-	(void)argv;
-
-	if (argc != 2)
-		error("error: not enough arguments.");
-
-	v = init_view();
-
-	set_hooks(v);
-	mlx_loop_hook(v->mlx, loop_hook, v);
-	mlx_loop(v->mlx);
-
-	return (EXIT_SUCCESS);
+	if ((image->ptr = mlx_new_image(mlx, W_WIDTH, W_HEIGHT)) == NULL)
+		error("error: mlx_new_image() failed");
+	if ((image->pixels = (int *)mlx_get_data_addr(image->ptr, &image->bits_per_pixel,
+					&image->size_line, &image->endian)) == NULL)
+	error("error: mlx_get_data_addr() failed");
 }

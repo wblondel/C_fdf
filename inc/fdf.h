@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/08 10:14:13 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/08 14:13:46 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,7 @@
 
 # include "mlx.h"
 # include "libft.h"
+# include "keys.h"
 
 /*
 ** Constants
@@ -36,19 +37,50 @@
 */
 typedef struct		s_img
 {
-	void			*img_ptr;
-	int				*data;
-	int				size_l;
-	int				bpp;
+	void			*ptr;
+	int				*pixels;
+	int				bits_per_pixel;
+	int				size_line;
 	int				endian;
 }					t_img;
 
-typedef struct		s_mlx
+typedef struct		s_view
 {
-	void			*mlx_ptr;
-	void			*win;
-	t_img			img;
-}					t_mlx;
+	void			*mlx;
+	void			*window;
+	t_img			image;
+	t_keys			key;
+	int				mouse_x;
+	int				mouse_y;
+}					t_view;
+
+/*
+** hooks.c
+*/
+void				set_hooks(t_view *v);
+int					key_press_hook(int keycode, t_view *v);
+int 				key_release_hook(int keycode, t_view *v);
+int					motion_hook(int x, int y, t_view *v);
+int					mouse_press_hook(int keycode, int x, int y, t_view *v);
+int					mouse_release_hook(int keycode, int x, int y, t_view *v);
+int					loop_hook(t_view *v);
+int					exit_hook(int keycode, t_view *v);
+
+/*
+** image.c
+*/
+void				create_image(void *mlx, t_img *image);
+
+/*
+** init.c
+*/
+t_view 				*init_view(void);
+
+/*
+** keys.c
+*/
+void				keys_init(t_keys *key);
+void 				key_toggle(t_keys *key, int keycode, int toggle);
 
 /*
 ** main.c
@@ -56,18 +88,8 @@ typedef struct		s_mlx
 void 				error(char *msg);
 
 /*
-** init.c
-*/
-t_mlx 				init_mlx(void);
-
-/*
-** hooks.c
-*/
-int					key_hook(int keycode, void *param);
-
-/*
 ** render.c
 */
-void 				render_horizontal_lines(int *data);
+void 				render_horizontal_lines(int *pixels);
 
 #endif
