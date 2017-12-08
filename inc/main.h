@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/08 06:57:18 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/08 07:43:39 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,10 +15,8 @@
 
 # define MAIN_H
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
 # include "mlx.h"
+# include "libft.h"
 
 typedef struct		s_data
 {
