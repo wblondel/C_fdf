@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:16:08 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 13:06:38 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/09 14:34:46 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -92,10 +92,15 @@ int		mouse_release_hook(int keycode, int x, int y, t_view *v)
 	return (0);
 }
 
+/*
+** Refreshes the image.
+** For now there is no FPS limit...
+** So I think we basically use 100% of our CPU here.
+*/
 int		loop_hook(t_view *v)
 {
 	create_image(v->mlx, &v->image);
-	render_horizontal_lines(v->image.pixels);
+	render_map(v->image.pixels);
 	mlx_put_image_to_window(v->mlx, v->window, v->image.ptr, 0, 0);
 	mlx_destroy_image(v->mlx, v->image.ptr);
 	return (0);

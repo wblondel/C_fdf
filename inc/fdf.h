@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 11:57:00 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/09 15:18:24 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,6 +21,8 @@
 # include <stdio.h>
 # include <errno.h>
 # include <math.h>
+# include <fcntl.h>
+# include <unistd.h>
 
 # include "mlx.h"
 # include "libft.h"
@@ -36,6 +38,23 @@
 /*
 ** Structs
 */
+typedef struct		s_vector
+{
+	double			x;
+	double			y;
+	double			z;
+	int				color;
+}					t_vector;
+
+typedef struct		s_map
+{
+	int				width;
+	int				height;
+	int				depth_min;
+	int				depth_max;
+	t_vector		**vectors;
+}					t_map;
+
 typedef struct		s_img
 {
 	void			*ptr;
@@ -50,6 +69,7 @@ typedef struct		s_view
 	void			*mlx;
 	void			*window;
 	t_img			image;
+	t_map			map;
 	t_keys			key;
 	t_clicks		click;
 	int				mouse_x;
@@ -96,8 +116,14 @@ void 				key_toggle(t_keys *key, int keycode, int toggle);
 void 				error(char *msg);
 
 /*
+** reader.c
+*/
+int					import_from_file(char const *filename, t_map *map);
+
+/*
 ** render.c
 */
 void 				render_horizontal_lines(int *pixels);
+void				render_map(int *data);
 
 #endif
