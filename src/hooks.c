@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:16:08 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 11:41:12 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/09 13:06:38 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,15 +27,14 @@ void	set_hooks(t_view *v)
 
 int		key_press_hook(int keycode, t_view *v)
 {
-	ft_putstr("Pressed. ");
-	ft_putnbr(keycode);
-	ft_putchar('\n');
-	if (keycode == KEY_ESC)
+	key_toggle(&v->key, keycode, 1);
+
+	if (v->key.esc)
 	{
 		mlx_destroy_window(v->mlx, v->window);
 		exit(EXIT_SUCCESS);
 	}
-	key_toggle(&v->key, keycode, 1);
+
 	return (0);
 }
 
@@ -47,27 +46,37 @@ int		key_release_hook(int keycode, t_view *v)
 
 int		motion_hook(int x, int y, t_view *v)
 {
-	if(v->mouse_x && v->mouse_y)
+	if (v->mouse_x && v->mouse_y)
 	{
-		if (v->mouse_x < x)
-			ft_putstr("Rotating anti-clockwise\n");
-		else if (v->mouse_x > x)
-			ft_putstr("Rotating clockwise\n");
-		v->mouse_x = x;
-		v->mouse_y = y;
+		if (v->mouse_x > W_WIDTH || v->mouse_y > W_HEIGHT ||
+			v->mouse_x < 0 || v->mouse_y < 0)
+		{
+			clicks_init(&v->click);
+		}
+		if (v->click.left)
+		{
+			if (v->mouse_x < x)
+			{
+				ft_putstr("Rotating anti-clockwise\n");
+				/*map_rotate(v, -1, 0);*/
+			}
+			else if (v->mouse_x > x)
+			{
+				ft_putstr("Rotating clockwise\n");
+				/*map_rotate(v, 1, 0);*/
+			}
+			v->mouse_x = x;
+			v->mouse_y = y;
+		}
 	}
 	return (0);
 }
 
 int		mouse_press_hook(int keycode, int x, int y, t_view *v)
 {
-	key_toggle(&v->key, keycode, 1);
-
 	if (x > 0 && y > 0 && x < W_WIDTH && y < W_HEIGHT)
 	{
-		ft_putstr("Clicked.");
-		ft_putnbr(keycode);
-		ft_putchar('\n');
+		click_toggle(&v->click, keycode, 1);
 		v->mouse_x = x;
 		v->mouse_y = y;
 	}
@@ -76,14 +85,10 @@ int		mouse_press_hook(int keycode, int x, int y, t_view *v)
 
 int		mouse_release_hook(int keycode, int x, int y, t_view *v)
 {
-	key_toggle(&v->key, keycode, 0);
-	(void)x;
-	(void)y;
-	ft_putstr("Released. ");
-	ft_putnbr(keycode);
-	ft_putchar('\n');
-	v->mouse_x = 0;
-	v->mouse_y = 0;
+	click_toggle(&v->click, keycode, 0);
+
+	v->mouse_x = x;
+	v->mouse_y = y;
 	return (0);
 }
 

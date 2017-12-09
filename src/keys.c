@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 13:19:53 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/08 13:27:36 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/09 12:03:41 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -60,6 +60,7 @@ void 			keys_init(t_keys *key)
 	key->n = 0;
 	key->m = 0;
 	key->tab = 0;
+	key->esc = 0;
 	key->plus = 0;
 	key->minus = 0;
 	key->left = 0;
@@ -114,6 +115,7 @@ static void key_toggle_split_two(t_keys *key, int keycode, int toggle)
 	keycode == KEY_N ? key->n = toggle : 0;
 	keycode == KEY_M ? key->m = toggle : 0;
 	keycode == KEY_TAB ? key->tab = toggle : 0;
+	keycode == KEY_ESC ? key->esc = toggle : 0;
 	keycode == KEY_PLUS ? key->plus = toggle : 0;
 	keycode == KEY_MINUS ? key->minus = toggle : 0;
 	keycode == KEY_LEFT ? key->left = toggle : 0;

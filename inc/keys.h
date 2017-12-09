@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 13:04:34 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/08 13:04:37 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/09 12:02:47 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -119,6 +119,7 @@ typedef struct	s_keys
 	int			n:1;
 	int			m:1;
 	int			tab:1;
+	int			esc:1;
 	int			plus:1;
 	int			minus:1;
 	int			left:1;

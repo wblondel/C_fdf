@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 11:42:36 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 11:50:29 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/09 12:31:01 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,10 +22,9 @@
 
 typedef struct	s_clicks
 {
-	int			none:1;
-	int			click_left:1;
-	int			click_right:1;
-	int			click_middle:1;
+	int			left:1;
+	int			right:1;
+	int			middle:1;
 	int			zoom:1;
 	int			unzoom:1;
 }				t_clicks;
