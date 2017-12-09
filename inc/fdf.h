@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 15:18:24 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/09 15:33:35 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -79,15 +79,15 @@ typedef struct		s_view
 /*
 ** clicks.c
 */
-void 				clicks_init(t_clicks *click);
-void 				click_toggle(t_clicks *click, int keycode, int toggle);
+void				clicks_init(t_clicks *click);
+void				click_toggle(t_clicks *click, int keycode, int toggle);
 
 /*
 ** hooks.c
 */
 void				set_hooks(t_view *v);
 int					key_press_hook(int keycode, t_view *v);
-int 				key_release_hook(int keycode, t_view *v);
+int					key_release_hook(int keycode, t_view *v);
 int					motion_hook(int x, int y, t_view *v);
 int					mouse_press_hook(int keycode, int x, int y, t_view *v);
 int					mouse_release_hook(int keycode, int x, int y, t_view *v);
@@ -102,18 +102,18 @@ void				create_image(void *mlx, t_img *image);
 /*
 ** init.c
 */
-t_view 				*init_view(void);
+t_view				*init_view(void);
 
 /*
 ** keys.c
 */
 void				keys_init(t_keys *key);
-void 				key_toggle(t_keys *key, int keycode, int toggle);
+void				key_toggle(t_keys *key, int keycode, int toggle);
 
 /*
 ** main.c
 */
-void 				error(char *msg);
+void				error(char *msg);
 
 /*
 ** reader.c
@@ -123,7 +123,7 @@ int					import_from_file(char const *filename, t_map *map);
 /*
 ** render.c
 */
-void 				render_horizontal_lines(int *pixels);
+void				render_horizontal_lines(int *pixels);
 void				render_map(int *data);
 
 #endif

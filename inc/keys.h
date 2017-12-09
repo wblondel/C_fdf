@@ -6,28 +6,13 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 13:04:34 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 12:02:47 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/09 15:34:10 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef KEYS_H
 # define KEYS_H
-
-/*
-** char *string = ""
-**	"asdfhgzxcv"		This string has the matching symbol or letter
-**	"bqweryt123"		for the index of the keycode for the key.
-**	"465=97-80]"		if you press KEY_BRACE_R or ]
-**	"ou[ip lj\"k"		You could use string[30] or string[KEY_BRACE_R]
-**	";\\,/nm.  ` "		to access the matching symbol or letter.
-**	"	. * +   "
-**	"/ -  =012345"		If you find anything missing please let me know.
-**	"67 89";
-*/
-
-/* This isn't the whole thing, look above. */
-# define KEY_STRING "asdfhgzxcvbqweyt123465=97-80]ou[ip lj\"k;\\,/nm."
 
 # define KEY_A 0
 # define KEY_S 1
