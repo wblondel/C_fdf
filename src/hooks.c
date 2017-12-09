@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:16:08 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 14:34:46 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/09 15:31:23 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,6 +35,29 @@ int		key_press_hook(int keycode, t_view *v)
 		exit(EXIT_SUCCESS);
 	}
 
+	if (v->key.d)
+	{
+		ft_putstr("Moving map to the left.\n");
+		/*map_move(v, 0, 1, 0);*/
+	}
+
+	if (v->key.a)
+	{
+		ft_putstr("Moving map to the right.\n");
+		/*map_move(v, 0, -1, 0);*/
+	}
+
+	if (v->key.w)
+	{
+		ft_putstr("Moving map down.\n");
+		/*map_move(v, 0, 0, -1);*/
+	}
+
+	if (v->key.s)
+	{
+		ft_putstr("Moving map up.\n");
+		/*map_move(v, 0, 0, 1);*/
+	}
 	return (0);
 }
 
@@ -58,12 +81,12 @@ int		motion_hook(int x, int y, t_view *v)
 			if (v->mouse_x < x)
 			{
 				ft_putstr("Rotating anti-clockwise\n");
-				/*map_rotate(v, -1, 0);*/
+				/*map_rotate(v, -1, 0, 0);*/
 			}
 			else if (v->mouse_x > x)
 			{
 				ft_putstr("Rotating clockwise\n");
-				/*map_rotate(v, 1, 0);*/
+				/*map_rotate(v, 1, 0, 0);*/
 			}
 			v->mouse_x = x;
 			v->mouse_y = y;
@@ -96,6 +119,7 @@ int		mouse_release_hook(int keycode, int x, int y, t_view *v)
 ** Refreshes the image.
 ** For now there is no FPS limit...
 ** So I think we basically use 100% of our CPU here.
+** TODO: FPS limit.
 */
 int		loop_hook(t_view *v)
 {
@@ -106,6 +130,10 @@ int		loop_hook(t_view *v)
 	return (0);
 }
 
+/*
+** Hook when we click the red cross.
+** TODO: Call a function to free everything here.
+*/
 int		exit_hook(int keycode, t_view *v)
 {
 	(void)keycode;
