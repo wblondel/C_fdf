@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:42:45 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 14:32:01 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/09 15:22:26 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,10 +23,6 @@ void 	render_horizontal_lines(int *pixels)
 {
 	int count_h;
 	int count_w;
-	/*int r;
-
-	srand(time(NULL));
-	r = rand() % 20 + 1;*/
 
 	count_h = -1;
 	while (++count_h < W_HEIGHT)
