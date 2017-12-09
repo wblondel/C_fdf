@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:36:18 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/08 13:41:41 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/09 11:58:38 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,5 +40,6 @@ t_view		*init_view(void)
 						"FdF Reader")) == NULL)
 		error("error: mlx_new_window() failed");
 	keys_init(&v->key);
+	clicks_init(&v->click);
 	return (v);
 }

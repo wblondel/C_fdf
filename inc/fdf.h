@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/08 14:13:46 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/09 11:57:00 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,6 +25,7 @@
 # include "mlx.h"
 # include "libft.h"
 # include "keys.h"
+# include "clicks.h"
 
 /*
 ** Constants
@@ -50,9 +51,16 @@ typedef struct		s_view
 	void			*window;
 	t_img			image;
 	t_keys			key;
+	t_clicks		click;
 	int				mouse_x;
 	int				mouse_y;
 }					t_view;
+
+/*
+** clicks.c
+*/
+void 				clicks_init(t_clicks *click);
+void 				click_toggle(t_clicks *click, int keycode, int toggle);
 
 /*
 ** hooks.c
