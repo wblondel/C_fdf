@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/10 14:34:40 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/10 16:04:42 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -119,6 +119,11 @@ void				error(char *msg);
 ** reader.c
 */
 int					import_from_file(char const *filename, t_map *map);
+
+/*
+** map.c
+*/
+void 				fill_map(t_map *map, t_list *l);
 
 /*
 ** render.c

@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 13:52:26 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 15:18:18 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/10 16:13:17 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #include "fdf.h"
 
 static int		open_file(char const *filename);
-static int		read_file(int const fd, t_map *map);
+static int		read_file(int const fd, t_list *l);
 
 /*
 ** We try to open what's behind the filename. See open_file().
@@ -23,11 +23,15 @@ static int		read_file(int const fd, t_map *map);
 int		import_from_file(char const *filename, t_map *map)
 {
 	int		fd;
+	t_list	*l;
+
+	l = NULL;
 
 	if ((fd = open_file(filename)) >= 0)
 	{
-		read_file(fd, map);
+		read_file(fd, l);
 		close(fd);
+		fill_map(map, l);
 		return (0);
 	}
 	else
@@ -56,9 +60,13 @@ static int		open_file(char const *filename)
 /*
 ** We read the file that is behind the file descriptor fd.
 */
-static int		read_file(int const fd, t_map *map)
+static int		read_file(int const fd, t_list *l)
 {
+	(void)l;
 	(void)fd;
-	(void)map;
+
+	/* TODO: boucle while avec GNL */
+
+	l = ft_lstnew("test", ft_strlen("test"));
 	return (0);
 }

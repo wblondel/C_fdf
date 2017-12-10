@@ -6,13 +6,22 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/01 10:21:15 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/07 07:01:35 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/10 15:06:17 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+/*
+** get_next_line.h
+*/
+# include <unistd.h>
+# include <stdlib.h>
+# define BUFF_SIZE 4096
+
+int					get_next_line(int const fd, char **line);
 
 /*
 ** libft_header.h
