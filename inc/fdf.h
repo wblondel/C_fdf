@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 15:33:35 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/10 14:34:40 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,13 +38,13 @@
 /*
 ** Structs
 */
-typedef struct		s_vector
+/*typedef struct		s_vector
 {
 	double			x;
 	double			y;
 	double			z;
 	int				color;
-}					t_vector;
+}					t_vector;*/
 
 typedef struct		s_map
 {
@@ -52,7 +52,7 @@ typedef struct		s_map
 	int				height;
 	int				depth_min;
 	int				depth_max;
-	t_vector		**vectors;
+	char			**lines;
 }					t_map;
 
 typedef struct		s_img
