@@ -84,7 +84,8 @@ SRC = 	ft_abs.c\
 		ft_swap_i.c\
 		ft_swap.c\
 		ft_tolower.c\
-		ft_toupper.c
+		ft_toupper.c\
+		get_next_line.c
 
 OBJ = $(SRC:.c=.o)
 
