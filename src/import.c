@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 13:52:26 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/10 16:13:17 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2017/12/10 20:34:56 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,5 +68,6 @@ static int		read_file(int const fd, t_list *l)
 	/* TODO: boucle while avec GNL */
 
 	l = ft_lstnew("test", ft_strlen("test"));
+	
 	return (0);
 }
