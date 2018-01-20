@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:36:18 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 11:58:38 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/20 16:25:32 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,15 +19,17 @@
 ** One more time with mlx_new_image
 **
 ** Now the important part :
-** mlx_get_data_addr will return a char * that is 4 time the width * height of your imqge.
-** Why so ? Let me explain : This char * will represent your image, pixel by pixel,
-** and the values of this array are the colors. That's why the array is 4 times bigger :
-** you need 4 char to code the color of each pixels (one for Red, Green and Blue) and one for the alpha.
-** But... it's not very convenient, right ? So here is my little trick : you cast
-** mlx_get_data_addr as an int * and store it in an int *.
-** This way, the array will have the exact same size as your window, and each index
-** will represent one complete color of a pixel !
+** mlx_get_data_addr will return a char * that is 4 time the width * height of
+** your image.
+** Why so ? Let me explain : This char * will represent your image, pixel by
+** pixel, and the values of this array are the colors. That's why the array is
+** 4 times bigger : you need 4 char to code the color of each pixels (one for
+** Red, Green and Blue) and one for the alpha. But... it's not very convenient,
+** right ? So here is my little trick : you cast mlx_get_data_addr as an int *
+** and store it in an int *. This way, the array will have the exact same size
+** as your window, and each index will represent one complete color of a pixel !
 */
+
 t_view		*init_view(void)
 {
 	t_view	*v;

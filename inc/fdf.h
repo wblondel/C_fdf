@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/20 13:39:42 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/20 16:45:31 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,13 +38,15 @@
 /*
 ** Structs
 */
-/*typedef struct		s_vector
-{
-	double			x;
-	double			y;
-	double			z;
-	int				color;
-}					t_vector;*/
+/*
+** typedef struct		s_vector
+** {
+**	double			x;
+**	double			y;
+**	double			z;
+**	int				color;
+** }					t_vector;
+*/
 
 typedef struct		s_map
 {
@@ -52,7 +54,7 @@ typedef struct		s_map
 	int				height;
 	int				depth_min;
 	int				depth_max;
-	char			**filelines;
+	int				**file;
 }					t_map;
 
 typedef struct		s_img
@@ -83,14 +85,26 @@ void				clicks_init(t_clicks *click);
 void				click_toggle(t_clicks *click, int keycode, int toggle);
 
 /*
-** hooks.c
+** hooks_init.c
 */
 void				set_hooks(t_view *v);
+
+/*
+** hooks_keyboard.c
+*/
 int					key_press_hook(int keycode, t_view *v);
 int					key_release_hook(int keycode, t_view *v);
-int					motion_hook(int x, int y, t_view *v);
+
+/*
+** hooks_mouse.c
+*/
 int					mouse_press_hook(int keycode, int x, int y, t_view *v);
 int					mouse_release_hook(int keycode, int x, int y, t_view *v);
+int					motion_hook(int x, int y, t_view *v);
+
+/*
+** hooks_others.c
+*/
 int					loop_hook(t_view *v);
 int					exit_hook(int keycode, t_view *v);
 
@@ -98,6 +112,11 @@ int					exit_hook(int keycode, t_view *v);
 ** image.c
 */
 void				create_image(void *mlx, t_img *image);
+
+/*
+** import.c
+*/
+int					import_from_file(char const *filename, t_map *map);
 
 /*
 ** init.c
@@ -116,14 +135,9 @@ void				key_toggle(t_keys *key, int keycode, int toggle);
 void				error(char *msg);
 
 /*
-** reader.c
-*/
-int					import_from_file(char const *filename, t_map *map);
-
-/*
 ** map.c
 */
-void 				fill_map(t_map *map, t_list *l);
+void				fill_map(t_map *map, t_list *l);
 
 /*
 ** render.c

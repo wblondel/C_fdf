@@ -6,42 +6,12 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 13:52:26 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/20 14:46:29 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/20 17:20:12 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-static int		open_file(char const *filename);
-static int		read_file(int const fd, int const nblines, t_map *map);
-static int		count_lines(int const fd);
-
-/*
-** We try to open what's behind the filename. See open_file().
-** If OK, we read the file, close the fd, and return the map.
-*/
-int		import_from_file(char const *filename, t_map *map)
-{
-	int		fd;
-	int		nblines;
-
-	if ((fd = open_file(filename)) >= 0)
-	{
-		nblines = count_lines(fd);
-		close(fd);
-	}
-
-	if ((fd = open_file(filename)) >= 0)
-	{
-		read_file(fd, nblines, map);
-		close(fd);
-		/*fill_map(map, lst);*/
-		return (0);
-	}
-	else
-		return (-1);
-}
 
 /*
 ** We try to open what's behind the filename.
@@ -49,6 +19,7 @@ int		import_from_file(char const *filename, t_map *map)
 ** If it's a file, we return the file descriptor.
 ** If nothing exists of name filename, we return -1.
 */
+
 static int		open_file(char const *filename)
 {
 	int		fd;
@@ -65,25 +36,43 @@ static int		open_file(char const *filename)
 /*
 ** We read the file that is behind the file descriptor fd.
 */
+
 static int		read_file(int const fd, int const nblines, t_map *map)
 {
-	int		i;
+	int		y;
+	int		x;
+	char	**split;
+	char	*line;
 
-	i = 0;
-	map->filelines = (char**) ft_memalloc(nblines * sizeof(char*));
-
-	while (get_next_line(fd, &map->filelines[i]) == 1)
+	ft_putnbr(nblines);
+	ft_putchar('\n');
+	y = 0;
+	map->file = (int**)ft_memalloc(nblines * sizeof(int*));
+	while (get_next_line(fd, &line) == 1)
 	{
-		ft_putendl(map->filelines[i]);
-		i++;
+		x = 0;
+		split = ft_strsplit(line, ' ');
+		ft_strdel(&line);
+		while (split[x])
+		{
+			map->file[y] = (int *)ft_memalloc(nblines * sizeof(int));
+			map->file[y][x] = ft_atoi(split[x]);
+			ft_strdel(&split[x]);
+			/*ft_putnbr(map->file[y][x]);
+			ft_putchar(' ');*/
+			x++;
+		}
+		/*ft_putchar('\n');*/
+		free(split);
+		y++;
 	}
-
 	return (0);
 }
 
 /*
 ** Count the number of lines in a file.
 */
+
 static int		count_lines(int const fd)
 {
 	int		nblines;
@@ -92,7 +81,31 @@ static int		count_lines(int const fd)
 	nblines = 0;
 	while (get_next_line(fd, &line) == 1)
 		nblines++;
-	free(line);
-
+	ft_strdel(&line);
 	return (nblines);
+}
+
+/*
+** We try to open what's behind the filename. See open_file().
+** If OK, we read the file, close the fd, and return the map.
+*/
+
+int				import_from_file(char const *filename, t_map *map)
+{
+	int		fd;
+	int		nblines;
+
+	if ((fd = open_file(filename)) >= 0)
+	{
+		nblines = count_lines(fd);
+		close(fd);
+	}
+	if ((fd = open_file(filename)) >= 0)
+	{
+		read_file(fd, nblines, map);
+		close(fd);
+		return (0);
+	}
+	else
+		return (-1);
 }

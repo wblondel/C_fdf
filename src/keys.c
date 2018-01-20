@@ -6,14 +6,14 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 13:19:53 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 12:03:41 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/20 16:39:56 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include <fdf.h>
 
-static void 	key_init_split(t_keys *key)
+static void		key_init_split(t_keys *key)
 {
 	key->a = 0;
 	key->s = 0;
@@ -42,7 +42,7 @@ static void 	key_init_split(t_keys *key)
 	key->seven = 0;
 }
 
-void 			keys_init(t_keys *key)
+void			keys_init(t_keys *key)
 {
 	key_init_split(key);
 	key->eight = 0;
@@ -69,7 +69,7 @@ void 			keys_init(t_keys *key)
 	key->up = 0;
 }
 
-static void	key_toggle_split_one(t_keys *key, int keycode, int toggle)
+static void		key_toggle_split_one(t_keys *key, int keycode, int toggle)
 {
 	keycode == KEY_A ? key->a = toggle : 0;
 	keycode == KEY_S ? key->s = toggle : 0;
@@ -98,7 +98,7 @@ static void	key_toggle_split_one(t_keys *key, int keycode, int toggle)
 	keycode == KEY_SEVEN ? key->seven = toggle : 0;
 }
 
-static void key_toggle_split_two(t_keys *key, int keycode, int toggle)
+static void		key_toggle_split_two(t_keys *key, int keycode, int toggle)
 {
 	keycode == KEY_EIGHT ? key->eight = toggle : 0;
 	keycode == KEY_ZERO ? key->zero = toggle : 0;
@@ -124,7 +124,7 @@ static void key_toggle_split_two(t_keys *key, int keycode, int toggle)
 	keycode == KEY_UP ? key->up = toggle : 0;
 }
 
-void		key_toggle(t_keys *key, int keycode, int toggle)
+void			key_toggle(t_keys *key, int keycode, int toggle)
 {
 	if (keycode < 27)
 		key_toggle_split_one(key, keycode, toggle);

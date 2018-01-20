@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:42:45 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 15:22:26 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/20 16:27:39 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,8 @@
 ** Now just a little example : here is a loop that will draw each pixels that
 ** have an odd width in white and the ones that have an even width in black.
 */
-void 	render_horizontal_lines(int *pixels)
+
+void	render_horizontal_lines(int *pixels)
 {
 	int count_h;
 	int count_w;
@@ -42,6 +43,7 @@ void 	render_horizontal_lines(int *pixels)
 ** We need do have our file stored somewhere.
 ** We don't want to read our file each time we create the image...
 */
+
 void	render_map(int *pixels)
 {
 	(void)pixels;

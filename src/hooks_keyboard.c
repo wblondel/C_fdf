@@ -1,20 +1,39 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   map.c                                            .::    .:/ .      .::   */
+/*   hooks_keyboard.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/10 16:00:38 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/20 16:27:15 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/20 16:31:12 by wblondel     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/20 16:37:18 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	fill_map(t_map *map, t_list *l)
+int		key_press_hook(int keycode, t_view *v)
 {
-	(void)map;
-	(void)l;
+	key_toggle(&v->key, keycode, 1);
+	if (v->key.esc)
+	{
+		mlx_destroy_window(v->mlx, v->window);
+		exit(EXIT_SUCCESS);
+	}
+	if (v->key.d)
+		ft_putstr("Moving map to the left.\n");
+	if (v->key.a)
+		ft_putstr("Moving map to the right.\n");
+	if (v->key.w)
+		ft_putstr("Moving map down.\n");
+	if (v->key.s)
+		ft_putstr("Moving map up.\n");
+	return (0);
+}
+
+int		key_release_hook(int keycode, t_view *v)
+{
+	key_toggle(&v->key, keycode, 0);
+	return (0);
 }
