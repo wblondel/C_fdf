@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/10 16:04:42 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/20 13:39:42 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -52,7 +52,7 @@ typedef struct		s_map
 	int				height;
 	int				depth_min;
 	int				depth_max;
-	char			**lines;
+	char			**filelines;
 }					t_map;
 
 typedef struct		s_img

@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:55:32 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 15:18:02 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/15 04:41:09 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,9 +34,9 @@ int		main(int argc, char **argv)
 	v = init_view();
 
 	/* We import data from file */
-	ft_putstr("Importing from file... ");
+	ft_putstr("Importing from file...\n");
 	if ((import_from_file(argv[1], &v->map) == -1))
-		error("error importing from file.");
+		error("Error importing from file.\n");
 	ft_putstr("DONE!\n");
 
 	/* We set the hooks and the loop_hook to refresh image */

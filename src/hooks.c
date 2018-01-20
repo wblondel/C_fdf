@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:16:08 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 15:31:23 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/20 13:49:01 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,34 +67,6 @@ int		key_release_hook(int keycode, t_view *v)
 	return (0);
 }
 
-int		motion_hook(int x, int y, t_view *v)
-{
-	if (v->mouse_x && v->mouse_y)
-	{
-		if (v->mouse_x > W_WIDTH || v->mouse_y > W_HEIGHT ||
-			v->mouse_x < 0 || v->mouse_y < 0)
-		{
-			clicks_init(&v->click);
-		}
-		if (v->click.left)
-		{
-			if (v->mouse_x < x)
-			{
-				ft_putstr("Rotating anti-clockwise\n");
-				/*map_rotate(v, -1, 0, 0);*/
-			}
-			else if (v->mouse_x > x)
-			{
-				ft_putstr("Rotating clockwise\n");
-				/*map_rotate(v, 1, 0, 0);*/
-			}
-			v->mouse_x = x;
-			v->mouse_y = y;
-		}
-	}
-	return (0);
-}
-
 int		mouse_press_hook(int keycode, int x, int y, t_view *v)
 {
 	if (x > 0 && y > 0 && x < W_WIDTH && y < W_HEIGHT)
@@ -115,6 +87,38 @@ int		mouse_release_hook(int keycode, int x, int y, t_view *v)
 	return (0);
 }
 
+int		motion_hook(int x, int y, t_view *v)
+{
+	v->mouse_x = x;
+	v->mouse_y = y;
+
+	/* Cette partie doit se retrouver dans la fonction de creation d'image */
+
+	/*if (v->mouse_x && v->mouse_y)
+	{
+		if (v->mouse_x > W_WIDTH || v->mouse_y > W_HEIGHT ||
+			v->mouse_x < 0 || v->mouse_y < 0)
+		{
+			ft_putstr("click init");
+			clicks_init(&v->click);
+		}
+		if (v->click.left)
+		{
+			if (v->mouse_x < x)
+			{
+				ft_putstr("Rotating anti-clockwise\n");
+			}
+			else if (v->mouse_x > x)
+			{
+				ft_putstr("Rotating clockwise\n");
+			}
+			v->mouse_x = x;
+			v->mouse_y = y;
+		}
+	}*/
+	return (0);
+}
+
 /*
 ** Refreshes the image.
 ** For now there is no FPS limit...
@@ -127,6 +131,12 @@ int		loop_hook(t_view *v)
 	render_map(v->image.pixels);
 	mlx_put_image_to_window(v->mlx, v->window, v->image.ptr, 0, 0);
 	mlx_destroy_image(v->mlx, v->image.ptr);
+	/*ft_putstr("x: ");
+	ft_putnbr(v->mouse_x);
+	ft_putstr("; y: ");
+	ft_putnbr(v->mouse_y);
+	ft_putstr("\n");*/
+	/*ft_putstr(*v->map.filelines);*/
 	return (0);
 }
 

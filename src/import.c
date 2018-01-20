@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 13:52:26 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/10 20:34:56 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/20 14:46:29 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,8 @@
 #include "fdf.h"
 
 static int		open_file(char const *filename);
-static int		read_file(int const fd, t_list *l);
+static int		read_file(int const fd, int const nblines, t_map *map);
+static int		count_lines(int const fd);
 
 /*
 ** We try to open what's behind the filename. See open_file().
@@ -23,15 +24,19 @@ static int		read_file(int const fd, t_list *l);
 int		import_from_file(char const *filename, t_map *map)
 {
 	int		fd;
-	t_list	*l;
-
-	l = NULL;
+	int		nblines;
 
 	if ((fd = open_file(filename)) >= 0)
 	{
-		read_file(fd, l);
+		nblines = count_lines(fd);
 		close(fd);
-		fill_map(map, l);
+	}
+
+	if ((fd = open_file(filename)) >= 0)
+	{
+		read_file(fd, nblines, map);
+		close(fd);
+		/*fill_map(map, lst);*/
 		return (0);
 	}
 	else
@@ -60,14 +65,34 @@ static int		open_file(char const *filename)
 /*
 ** We read the file that is behind the file descriptor fd.
 */
-static int		read_file(int const fd, t_list *l)
+static int		read_file(int const fd, int const nblines, t_map *map)
 {
-	(void)l;
-	(void)fd;
+	int		i;
 
-	/* TODO: boucle while avec GNL */
+	i = 0;
+	map->filelines = (char**) ft_memalloc(nblines * sizeof(char*));
 
-	l = ft_lstnew("test", ft_strlen("test"));
-	
+	while (get_next_line(fd, &map->filelines[i]) == 1)
+	{
+		ft_putendl(map->filelines[i]);
+		i++;
+	}
+
 	return (0);
+}
+
+/*
+** Count the number of lines in a file.
+*/
+static int		count_lines(int const fd)
+{
+	int		nblines;
+	char	*line;
+
+	nblines = 0;
+	while (get_next_line(fd, &line) == 1)
+		nblines++;
+	free(line);
+
+	return (nblines);
 }
