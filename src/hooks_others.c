@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:32:52 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/20 16:37:51 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 17:36:41 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,7 +51,8 @@ int		motion_hook(int x, int y, t_view *v)
 int		loop_hook(t_view *v)
 {
 	create_image(v->mlx, &v->image);
-	render_map(v->image.pixels);
+	calculate_points(&v->map);
+	render_map(v->image.pixels, v->map.points, &v->map);
 	mlx_put_image_to_window(v->mlx, v->window, v->image.ptr, 0, 0);
 	mlx_destroy_image(v->mlx, v->image.ptr);
 	return (0);

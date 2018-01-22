@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:31:12 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 10:27:40 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 17:10:09 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,8 +29,10 @@ int		key_press_hook(int keycode, t_view *v)
 		ft_putstr("Moving map down.\n");
 	if (v->key.s)
 		ft_putstr("Moving map up.\n");
-	if (v->key.p)
+	if (v->key.f)
 		print_map(&v->map);
+	if (v->key.p)
+		print_points(&v->map);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 10:22:40 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 11:03:04 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 17:26:40 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,4 +37,30 @@ void 				print_map(t_map *map)
 		ft_putchar('\n');
 		i++;
 	}
+	ft_putchar('\n');
+}
+
+void 			print_points(t_map *map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < map->width)
+		{
+			ft_putnbr(map->points[i*10+j].x);
+			ft_putstr(", ");
+			ft_putnbr(map->points[i*10+j].y);
+			ft_putstr(", ");
+			ft_putnbr(map->points[i*10+j].z);
+			ft_putstr(" | ");
+			j++;
+		}
+		ft_putchar('\n');
+		i++;
+	}
+	ft_putchar('\n');
 }

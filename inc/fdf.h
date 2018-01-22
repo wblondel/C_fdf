@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 14:44:33 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 17:36:57 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,6 +53,7 @@ typedef struct		s_map
 	int				depth_min;
 	int				depth_max;
 	int				**file;
+	t_point			*points;
 }					t_map;
 
 typedef struct		s_img
@@ -86,6 +87,7 @@ void				click_toggle(t_clicks *click, int keycode, int toggle);
 ** debug.c
 */
 void 				print_map(t_map *map);
+void 				print_points(t_map *map);
 
 /*
 ** hooks_init.c
@@ -145,6 +147,7 @@ void				fill_map(t_map *map, t_list *l);
 /*
 ** render.c
 */
-void				render_map(int *pixels);
+void				render_map(int *pixels, t_point	*points, t_map *map);
+void 				calculate_points(t_map *map);
 
 #endif
