@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 13:52:26 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/20 17:20:12 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 11:15:31 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,32 +37,35 @@ static int		open_file(char const *filename)
 ** We read the file that is behind the file descriptor fd.
 */
 
-static int		read_file(int const fd, int const nblines, t_map *map)
+static int		read_file(int const fd, t_map *map)
 {
 	int		y;
 	int		x;
 	char	**split;
 	char	*line;
 
-	ft_putnbr(nblines);
-	ft_putchar('\n');
 	y = 0;
-	map->file = (int**)ft_memalloc(nblines * sizeof(int*));
+	map->file = (int**)ft_memalloc(map->height * sizeof(int*));
 	while (get_next_line(fd, &line) == 1)
 	{
 		x = 0;
 		split = ft_strsplit(line, ' ');
 		ft_strdel(&line);
+
+		map->width = 0;
 		while (split[x])
 		{
-			map->file[y] = (int *)ft_memalloc(nblines * sizeof(int));
-			map->file[y][x] = ft_atoi(split[x]);
-			ft_strdel(&split[x]);
-			/*ft_putnbr(map->file[y][x]);
-			ft_putchar(' ');*/
+			map->width++;
 			x++;
 		}
-		/*ft_putchar('\n');*/
+		x = 0;
+		map->file[y] = (int *)ft_memalloc(map->width * sizeof(int));
+		while (split[x])
+		{
+			map->file[y][x] = ft_atoi(split[x]);
+			ft_strdel(&split[x]);
+			x++;
+		}
 		free(split);
 		y++;
 	}
@@ -93,16 +96,18 @@ static int		count_lines(int const fd)
 int				import_from_file(char const *filename, t_map *map)
 {
 	int		fd;
-	int		nblines;
 
 	if ((fd = open_file(filename)) >= 0)
 	{
-		nblines = count_lines(fd);
+		map->height = count_lines(fd);
 		close(fd);
 	}
+	else
+		return (-1);
+
 	if ((fd = open_file(filename)) >= 0)
 	{
-		read_file(fd, nblines, map);
+		read_file(fd, map);
 		close(fd);
 		return (0);
 	}

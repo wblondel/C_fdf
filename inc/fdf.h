@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/20 16:45:31 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/22 14:44:33 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,21 +32,19 @@
 /*
 ** Constants
 */
-# define W_WIDTH 800
+# define W_WIDTH 600
 # define W_HEIGHT 600
 
 /*
 ** Structs
 */
-/*
-** typedef struct		s_vector
-** {
-**	double			x;
-**	double			y;
-**	double			z;
-**	int				color;
-** }					t_vector;
-*/
+
+typedef struct		s_point
+{
+	int 		x;
+	int			y;
+	int z;
+}					t_point;
 
 typedef struct		s_map
 {
@@ -83,6 +81,11 @@ typedef struct		s_view
 */
 void				clicks_init(t_clicks *click);
 void				click_toggle(t_clicks *click, int keycode, int toggle);
+
+/*
+** debug.c
+*/
+void 				print_map(t_map *map);
 
 /*
 ** hooks_init.c
@@ -142,7 +145,6 @@ void				fill_map(t_map *map, t_list *l);
 /*
 ** render.c
 */
-void				render_horizontal_lines(int *pixels);
-void				render_map(int *data);
+void				render_map(int *pixels);
 
 #endif
