@@ -6,7 +6,7 @@
 #    By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/08 06:50:34 by wblondel     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/22 10:28:13 by wblondel    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/23 18:21:18 by wblondel    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -38,6 +38,8 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 INC_PATH = inc
+HEADER = $(INC_PATH)/clicks.h $(INC_PATH)/fdf.h $(INC_PATH)/keys.h\
+			$(INC_PATH)/libft.h $(INC_PATH)/mlx.h
 
 LIBFT_PATH = libft
 LIBMLX_PATH = libmlx
@@ -76,7 +78,7 @@ $(OBJ_PATH):
 $(OBJ): | $(OBJ_PATH)
 
 # Compiles all the src into obj
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADER)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 # /!\ Dirty workaround /!\

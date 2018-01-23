@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:42:45 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 18:17:47 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/23 20:06:25 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -93,6 +93,8 @@ void			render_map(int *pixels, t_point	*points, t_map *map)
 	int i;
 	int j;
 	int ipixel;
+	int pos_x;
+	int pos_y;
 
 	i = 0;
 	while (i < map->height)
@@ -100,15 +102,16 @@ void			render_map(int *pixels, t_point	*points, t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			ipixel = points[i * map->width + j].y * W_WIDTH + points[i * map->width + j].x;
-			if (ipixel < map->height * map->width)
+			pos_y = points[i * map->width + j].y;
+			pos_x = points[i * map->width + j].x;
+			ipixel = pos_y * W_WIDTH + pos_x;
+			if (pos_y < W_HEIGHT && pos_y > 0 && pos_x < W_WIDTH && pos_x > 0)
 				pixels[ipixel] = 0x6379FF;
 			j++;
 		}
 		i++;
 	}
 }
-
 
 void 			calculate_points(t_map *map)
 {
@@ -123,12 +126,11 @@ void 			calculate_points(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			map->points[i * map->width + j].x = j * 10 + 10;
-			map->points[i * map->width + j].y = i * 10 + 10;
+			map->points[i * map->width + j].x = j * map->scale + map->margin_x;
+			map->points[i * map->width + j].y = i * map->scale + map->margin_y;
 			map->points[i * map->width + j].z = map->file[i][j];
 			j++;
 		}
 		i++;
 	}
-
 }

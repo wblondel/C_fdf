@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:31:12 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 17:10:09 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/23 19:58:13 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,13 +22,14 @@ int		key_press_hook(int keycode, t_view *v)
 		exit(EXIT_SUCCESS);
 	}
 	if (v->key.d)
-		ft_putstr("Moving map to the left.\n");
+		v->map.margin_x -= 1;
 	if (v->key.a)
-		ft_putstr("Moving map to the right.\n");
+		v->map.margin_x += 1;
 	if (v->key.w)
-		ft_putstr("Moving map down.\n");
+		v->map.margin_y += 1;
 	if (v->key.s)
-		ft_putstr("Moving map up.\n");
+		v->map.margin_y -= 1;
+
 	if (v->key.f)
 		print_map(&v->map);
 	if (v->key.p)

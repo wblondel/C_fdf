@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 11:42:36 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2017/12/09 12:31:01 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/23 20:13:42 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,8 +17,8 @@
 # define CLICK_LEFT 1
 # define CLICK_RIGHT 2
 # define CLICK_MIDDLE 3
-# define ZOOM 4
-# define UNZOOM 5
+# define UNZOOM 4
+# define ZOOM 5
 
 typedef struct	s_clicks
 {

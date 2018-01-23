@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 17:36:57 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/23 20:28:36 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,6 +23,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <time.h>
 
 # include "mlx.h"
 # include "libft.h"
@@ -36,14 +37,20 @@
 # define W_HEIGHT 600
 
 /*
+** Macros
+*/
+# define MIN(a,b) (((a)<(b))?(a):(b))
+# define MAX(a,b) (((a)>(b))?(a):(b))
+
+/*
 ** Structs
 */
 
 typedef struct		s_point
 {
-	int 		x;
-	int			y;
-	int z;
+	int 			x;
+	int				y;
+	int 			z;
 }					t_point;
 
 typedef struct		s_map
@@ -52,6 +59,9 @@ typedef struct		s_map
 	int				height;
 	int				depth_min;
 	int				depth_max;
+	int				margin_x;
+	int				margin_y;
+	unsigned char	scale;
 	int				**file;
 	t_point			*points;
 }					t_map;
@@ -63,6 +73,7 @@ typedef struct		s_img
 	int				bits_per_pixel;
 	int				size_line;
 	int				endian;
+
 }					t_img;
 
 typedef struct		s_view
@@ -75,6 +86,7 @@ typedef struct		s_view
 	t_clicks		click;
 	int				mouse_x;
 	int				mouse_y;
+	int				timestamp_lastrefresh;
 }					t_view;
 
 /*
