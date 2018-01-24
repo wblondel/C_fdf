@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 13:52:26 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/22 11:15:31 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 21:40:25 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,35 +39,29 @@ static int		open_file(char const *filename)
 
 static int		read_file(int const fd, t_map *map)
 {
-	int		y;
-	int		x;
+	int		yx[2];
 	char	**split;
 	char	*line;
 
-	y = 0;
+	yx[0] = 0;
 	map->file = (int**)ft_memalloc(map->height * sizeof(int*));
 	while (get_next_line(fd, &line) == 1)
 	{
-		x = 0;
+		yx[1] = 0;
 		split = ft_strsplit(line, ' ');
 		ft_strdel(&line);
-
-		map->width = 0;
-		while (split[x])
+		while (split[yx[1]])
+			yx[1]++;
+		map->width = (map->width == 0) ? yx[1] : MIN(yx[1], map->width);
+		yx[1] = -1;
+		map->file[yx[0]] = (int *)ft_memalloc(map->width * sizeof(int));
+		while (split[++yx[1]])
 		{
-			map->width++;
-			x++;
-		}
-		x = 0;
-		map->file[y] = (int *)ft_memalloc(map->width * sizeof(int));
-		while (split[x])
-		{
-			map->file[y][x] = ft_atoi(split[x]);
-			ft_strdel(&split[x]);
-			x++;
+			map->file[yx[0]][yx[1]] = ft_atoi(split[yx[1]]);
+			ft_strdel(&split[yx[1]]);
 		}
 		free(split);
-		y++;
+		yx[0]++;
 	}
 	return (0);
 }
@@ -104,7 +98,6 @@ int				import_from_file(char const *filename, t_map *map)
 	}
 	else
 		return (-1);
-
 	if ((fd = open_file(filename)) >= 0)
 	{
 		read_file(fd, map);

@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:32:52 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 13:46:51 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 20:40:58 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,33 +34,19 @@
 **}
 */
 
-int		motion_hook(int x, int y, t_global *g)
-{
-	g->mouse.x = x;
-	g->mouse.y = y;
-	return (0);
-}
-
 /*
-** Refreshes the image.
-** For now there is no FPS limit...
-** So I think we basically use 100% of our CPU here.
-** TODO: FPS limit.
+** It looks like the minilibx limits the FPS to 60.
+** Good.
 */
 
 int		loop_hook(t_global *g)
 {
-	/*if ( (int)time(NULL) >= g->timestamp_lastrefresh + 1)
-	{
-		printf("Redrawing.\n");*/
-		mlx_create_image(g->mlx, &g->image);
-		calculate_points(&g->map, &g->cam);
-		draw_map(g->image.pixels, g->map.points, &g->map);
-		mlx_put_image_to_window(g->mlx, g->window, g->image.ptr, 0, 0);
-		draw_ui(g);
-		mlx_destroy_image(g->mlx, g->image.ptr);
-		/*g->timestamp_lastrefresh = (int)time(NULL);
-	}*/
+	mlx_create_image(g->mlx, &g->image);
+	calculate_points(&g->map, &g->cam);
+	draw_map(g->image.pixels, g->map.points, &g->map);
+	mlx_put_image_to_window(g->mlx, g->window, g->image.ptr, 0, 0);
+	draw_ui(g);
+	mlx_destroy_image(g->mlx, g->image.ptr);
 	return (0);
 }
 

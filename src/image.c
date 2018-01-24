@@ -6,12 +6,25 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 13:40:45 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 13:32:20 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 20:42:08 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+/*
+** Now the important part :
+** mlx_get_data_addr will return a char * that is 4 time the width * height of
+** your image.
+** Why so ? Let me explain : This char * will represent your image, pixel by
+** pixel, and the values of this array are the colors. That's why the array is
+** 4 times bigger : you need 4 char to code the color of each pixels (one for
+** Red, Green and Blue) and one for the alpha. But... it's not very convenient,
+** right ? So here is my little trick : you cast mlx_get_data_addr as an int *
+** and store it in an int *. This way, the array will have the exact same size
+** as your window, and each index will represent one complete color of a pixel !
+*/
 
 void	mlx_create_image(void *mlx, t_img *image)
 {

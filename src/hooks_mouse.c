@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:31:34 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 12:39:27 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 21:55:49 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,12 +20,12 @@ int		mouse_press_hook(int keycode, int x, int y, t_global *g)
 		click_toggle(&g->click, keycode, 1);
 		if (g->click.zoom)
 		{
-			g->cam.scale = MIN(255, g->cam.scale + 1);
+			cam_set_scale(&g->cam, g->cam.scale + 1);
 			click_toggle(&g->click, keycode, 0);
 		}
 		if (g->click.unzoom)
 		{
-			g->cam.scale = MAX(1, g->cam.scale - 1);
+			cam_set_scale(&g->cam, g->cam.scale - 1);
 			click_toggle(&g->click, keycode, 0);
 		}
 	}
@@ -37,5 +37,12 @@ int		mouse_release_hook(int keycode, int x, int y, t_global *g)
 	(void)x;
 	(void)y;
 	click_toggle(&g->click, keycode, 0);
+	return (0);
+}
+
+int		motion_hook(int x, int y, t_global *g)
+{
+	g->mouse.x = x;
+	g->mouse.y = y;
 	return (0);
 }

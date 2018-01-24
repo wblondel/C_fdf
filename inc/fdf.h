@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 13:56:16 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 21:58:50 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,8 +23,6 @@
 # include <math.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include <time.h>
-
 # include "mlx.h"
 # include "libft.h"
 # include "keys.h"
@@ -33,16 +31,16 @@
 /*
 ** Constants
 */
-# define W_WIDTH 600
-# define W_HEIGHT 600
+# define W_WIDTH 1920
+# define W_HEIGHT 1080
 
 /*
 ** Macros
 */
 # define MIN(a,b) (((a)<(b))?(a):(b))
 # define MAX(a,b) (((a)>(b))?(a):(b))
-# define degreesToRadians(angleDegrees) ((angleDegrees) * M_PI / 180.0)
-# define radiansToDegrees(angleRadians) ((angleRadians) * 180.0 / M_PI)
+# define DEGTORAD(angleDegrees) ((angleDegrees) * M_PI / 180.0)
+# define RADTODEG(angleRadians) ((angleRadians) * 180.0 / M_PI)
 
 /*
 ** Structs
@@ -78,9 +76,9 @@ typedef struct		s_cam
 
 typedef struct		s_point
 {
-	int 			x;
+	int				x;
 	int				y;
-	int 			z;
+	int				z;
 }					t_point;
 
 /*
@@ -104,7 +102,7 @@ typedef struct		s_map
 ** Here is where our image is stored.
 ** ptr is created with mlx_new_image(mlx, W_WIDTH, W_HEIGHT)
 ** pixels is created with (int *)mlx_get_data_addr(image->ptr,
-				&image->bits_per_pixel, &image->size_line, &image->endian)
+**				&image->bits_per_pixel, &image->size_line, &image->endian)
 */
 
 typedef struct		s_img
@@ -133,7 +131,14 @@ typedef struct		s_global
 /*
 ** calculate.c
 */
-void 				calculate_points(t_map *map, t_cam *cam);
+void				to_isometric_2d(t_point *point);
+void				calculate_points(t_map *map, t_cam *cam);
+
+/*
+** cam.c
+*/
+void				cam_set_margin(t_cam *cam, int x, int y);
+void				cam_set_scale(t_cam *cam, int scale);
 
 /*
 ** clicks.c
@@ -142,16 +147,24 @@ void				clicks_init(t_clicks *click);
 void				click_toggle(t_clicks *click, int keycode, int toggle);
 
 /*
-** draw.c
-*/
-void				draw_map(int *pixels, t_point *points, t_map *map);
-void				draw_ui(t_global *g);
-
-/*
 ** debug.c
 */
-void 				print_map(t_map *map);
-void 				print_points(t_map *map);
+void				print_map(t_map *map);
+void				print_points(t_map *map);
+
+/*
+** draw_map.c
+*/
+void				draw_pixel(int y, int x, int *pixels);
+void				draw_line(t_point point0, t_point point1, int *pixels);
+void				draw_lines(int *pixels, t_point *points, t_map *map);
+void				draw_points(int *pixels, t_point *points, t_map *map);
+void				draw_map(int *pixels, t_point *points, t_map *map);
+
+/*
+** draw_ui.c
+*/
+void				draw_ui(t_global *g);
 
 /*
 ** hooks_init.c

@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   clicks.c                                         .::    .:/ .      .::   */
+/*   cam.c                                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/12/09 11:45:24 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 14:27:08 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/24 20:58:06 by wblondel     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/24 21:56:24 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include <fdf.h>
+#include "fdf.h"
 
-void			clicks_init(t_clicks *click)
+void	cam_set_margin(t_cam *cam, int x, int y)
 {
-	click->left = 0;
-	click->right = 0;
-	click->middle = 0;
-	click->zoom = 0;
-	click->unzoom = 0;
+	cam->margin_x = x;
+	cam->margin_y = y;
 }
 
-void			click_toggle(t_clicks *click, int keycode, int toggle)
+void	cam_set_scale(t_cam *cam, int scale)
 {
-	keycode == CLICK_LEFT ? click->left = toggle : 0;
-	keycode == CLICK_RIGHT ? click->right = toggle : 0;
-	keycode == CLICK_MIDDLE ? click->middle = toggle : 0;
-	keycode == ZOOM ? click->zoom = toggle : 0;
-	keycode == UNZOOM ? click->unzoom = toggle : 0;
+	if (scale < 1)
+		scale = 1;
+	if (scale > 255)
+		scale = 255;
+	cam->scale = scale;
 }

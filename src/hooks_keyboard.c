@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:31:12 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 12:39:01 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 21:02:58 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,14 +22,13 @@ int		key_press_hook(int keycode, t_global *g)
 		exit(EXIT_SUCCESS);
 	}
 	if (g->key.d)
-		g->cam.margin_x -= 1;
+		cam_set_margin(&g->cam, g->cam.margin_x -= 15, g->cam.margin_y += 15);
 	if (g->key.a)
-		g->cam.margin_x += 1;
+		cam_set_margin(&g->cam, g->cam.margin_x += 15, g->cam.margin_y -= 15);
 	if (g->key.w)
-		g->cam.margin_y += 1;
+		cam_set_margin(&g->cam, g->cam.margin_x += 15, g->cam.margin_y += 15);
 	if (g->key.s)
-		g->cam.margin_y -= 1;
-
+		cam_set_margin(&g->cam, g->cam.margin_x -= 15, g->cam.margin_y -= 15);
 	if (g->key.f)
 		print_map(&g->map);
 	if (g->key.p)
