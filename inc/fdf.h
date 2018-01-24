@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 21:58:50 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 23:13:06 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,6 +66,16 @@ typedef struct		s_cam
 	int				margin_x;
 	int				margin_y;
 	unsigned char	scale;
+	int				angle_x_1;
+	int				angle_x_2;
+	int				angle_x_3;
+	int				angle_x_4;
+	int				angle_x_5;
+	int				angle_y_1;
+	int				angle_y_2;
+	int				angle_y_3;
+	int				angle_y_4;
+	int				angle_y_5;
 }					t_cam;
 
 /*
@@ -131,7 +141,7 @@ typedef struct		s_global
 /*
 ** calculate.c
 */
-void				to_isometric_2d(t_point *point);
+void				to_isometric_2d(t_point *point, t_cam *cam);
 void				calculate_points(t_map *map, t_cam *cam);
 
 /*
@@ -165,6 +175,7 @@ void				draw_map(int *pixels, t_point *points, t_map *map);
 ** draw_ui.c
 */
 void				draw_ui(t_global *g);
+void				draw_ui2(t_global *g);
 
 /*
 ** hooks_init.c

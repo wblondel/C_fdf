@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:32:52 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 20:40:58 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 22:54:45 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,6 +44,7 @@ int		loop_hook(t_global *g)
 	mlx_create_image(g->mlx, &g->image);
 	calculate_points(&g->map, &g->cam);
 	draw_map(g->image.pixels, g->map.points, &g->map);
+	draw_ui2(g);
 	mlx_put_image_to_window(g->mlx, g->window, g->image.ptr, 0, 0);
 	draw_ui(g);
 	mlx_destroy_image(g->mlx, g->image.ptr);
