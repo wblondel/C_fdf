@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:32:52 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:35:53 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 13:46:51 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,10 +34,10 @@
 **}
 */
 
-int		motion_hook(int x, int y, t_view *v)
+int		motion_hook(int x, int y, t_global *g)
 {
-	v->mouse_x = x;
-	v->mouse_y = y;
+	g->mouse.x = x;
+	g->mouse.y = y;
 	return (0);
 }
 
@@ -48,26 +48,19 @@ int		motion_hook(int x, int y, t_view *v)
 ** TODO: FPS limit.
 */
 
-int		loop_hook(t_view *v)
+int		loop_hook(t_global *g)
 {
-	/*if ( (int)time(NULL) >= v->timestamp_lastrefresh + 1)
-	{*/
-		/*printf("Redrawing.\n");*/
-		create_image(v->mlx, &v->image);
-		calculate_points(&v->map);
-		render_map(v->image.pixels, v->map.points, &v->map);
-		mlx_put_image_to_window(v->mlx, v->window, v->image.ptr, 0, 0);
-
-		mlx_string_put(v->mlx, v->window, 10, 570, 0xFFFFFF, "Scale:");
-		mlx_string_put(v->mlx, v->window, 80, 570, 0xFFFFFF, ft_itoa(v->map.scale));
-		mlx_string_put(v->mlx, v->window, 120, 570, 0xFFFFFF, "Margin X:");
-		mlx_string_put(v->mlx, v->window, 220, 570, 0xFFFFFF, ft_itoa(v->map.margin_x));
-		mlx_string_put(v->mlx, v->window, 260, 570, 0xFFFFFF, "Margin Y:");
-		mlx_string_put(v->mlx, v->window, 360, 570, 0xFFFFFF, ft_itoa(v->map.margin_y));
-
-		mlx_destroy_image(v->mlx, v->image.ptr);
-		v->timestamp_lastrefresh = (int)time(NULL);
-	/*}*/
+	/*if ( (int)time(NULL) >= g->timestamp_lastrefresh + 1)
+	{
+		printf("Redrawing.\n");*/
+		mlx_create_image(g->mlx, &g->image);
+		calculate_points(&g->map, &g->cam);
+		draw_map(g->image.pixels, g->map.points, &g->map);
+		mlx_put_image_to_window(g->mlx, g->window, g->image.ptr, 0, 0);
+		draw_ui(g);
+		mlx_destroy_image(g->mlx, g->image.ptr);
+		/*g->timestamp_lastrefresh = (int)time(NULL);
+	}*/
 	return (0);
 }
 
@@ -76,9 +69,9 @@ int		loop_hook(t_view *v)
 ** TODO: Call a function to free everything here.
 */
 
-int		exit_hook(int keycode, t_view *v)
+int		exit_hook(int keycode, t_global *g)
 {
 	(void)keycode;
-	(void)v;
+	(void)g;
 	exit(EXIT_SUCCESS);
 }

@@ -6,14 +6,14 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 13:40:45 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/20 16:24:19 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 13:32:20 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	create_image(void *mlx, t_img *image)
+void	mlx_create_image(void *mlx, t_img *image)
 {
 	if ((image->ptr = mlx_new_image(mlx, W_WIDTH, W_HEIGHT)) == NULL)
 		error("error: mlx_new_image() failed");

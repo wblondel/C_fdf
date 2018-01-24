@@ -1,22 +1,56 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   render.c                                         .::    .:/ .      .::   */
+/*   draw.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:42:45 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:06:25 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 13:48:41 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <time.h>
-#include <stdlib.h>
 
-#define degreesToRadians(angleDegrees) ((angleDegrees) * M_PI / 180.0)
-#define radiansToDegrees(angleRadians) ((angleRadians) * 180.0 / M_PI)
+void			draw_map(int *pixels, t_point *points, t_map *map)
+{
+	int i;
+	int j;
+	int ipixel;
+	int pos_x;
+	int pos_y;
+
+	i = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < map->width)
+		{
+			pos_y = points[i * map->width + j].y;
+			pos_x = points[i * map->width + j].x;
+			ipixel = pos_y * W_WIDTH + pos_x;
+			if (pos_y < W_HEIGHT && pos_y > 0 && pos_x < W_WIDTH && pos_x > 0)
+				pixels[ipixel] = 0x6379FF;
+			j++;
+		}
+		i++;
+	}
+}
+
+void 		draw_ui(t_global *g)
+{
+	mlx_string_put(g->mlx, g->window, 10, 570, 0xFFFFFF, "Scale:");
+	mlx_string_put(g->mlx, g->window, 80, 570, 0xFFFFFF, ft_itoa(g->cam.scale));
+
+	mlx_string_put(g->mlx, g->window, 120, 570, 0xFFFFFF, "Margin X:");
+	mlx_string_put(g->mlx, g->window, 220, 570, 0xFFFFFF, ft_itoa(g->cam.margin_x));
+	mlx_string_put(g->mlx, g->window, 260, 570, 0xFFFFFF, "Margin Y:");
+	mlx_string_put(g->mlx, g->window, 360, 570, 0xFFFFFF, ft_itoa(g->cam.margin_y));
+
+	mlx_string_put(g->mlx, g->window, 490, 570, 0xFFFFFF, ft_itoa(g->mouse.x));
+	mlx_string_put(g->mlx, g->window, 550, 570, 0xFFFFFF, ft_itoa(g->mouse.y));
+}
 
 /*
 ** v[0] = dx
@@ -86,51 +120,3 @@
 	draw_line(bottomright, topright, pixels);
 	draw_line(topright, topleft, pixels);
 }*/
-
-
-void			render_map(int *pixels, t_point	*points, t_map *map)
-{
-	int i;
-	int j;
-	int ipixel;
-	int pos_x;
-	int pos_y;
-
-	i = 0;
-	while (i < map->height)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			pos_y = points[i * map->width + j].y;
-			pos_x = points[i * map->width + j].x;
-			ipixel = pos_y * W_WIDTH + pos_x;
-			if (pos_y < W_HEIGHT && pos_y > 0 && pos_x < W_WIDTH && pos_x > 0)
-				pixels[ipixel] = 0x6379FF;
-			j++;
-		}
-		i++;
-	}
-}
-
-void 			calculate_points(t_map *map)
-{
-	int		i;
-	int		j;
-
-	map->points = (t_point *)ft_memalloc(map->width * map->height * sizeof(t_point));
-
-	i = 0;
-	while (i < map->height)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			map->points[i * map->width + j].x = j * map->scale + map->margin_x;
-			map->points[i * map->width + j].y = i * map->scale + map->margin_y;
-			map->points[i * map->width + j].z = map->file[i][j];
-			j++;
-		}
-		i++;
-	}
-}

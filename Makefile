@@ -6,7 +6,7 @@
 #    By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/08 06:50:34 by wblondel     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/23 18:21:18 by wblondel    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/01/24 13:55:45 by wblondel    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -29,8 +29,9 @@ NAME = mlx
 
 # Project related variable
 SRC_PATH = src
-SRC_NAME = clicks.c debug.c hooks_init.c hooks_keyboard.c hooks_mouse.c\
-			hooks_others.c image.c import.c init.c keys.c main.c map.c render.c
+SRC_NAME = calculate.c clicks.c debug.c draw.c hooks_init.c hooks_keyboard.c\
+			hooks_mouse.c hooks_others.c image.c import.c init.c keys.c main.c
+			
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
 OBJ_PATH = obj

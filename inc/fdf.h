@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/23 20:28:36 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/24 13:56:16 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,9 +41,39 @@
 */
 # define MIN(a,b) (((a)<(b))?(a):(b))
 # define MAX(a,b) (((a)>(b))?(a):(b))
+# define degreesToRadians(angleDegrees) ((angleDegrees) * M_PI / 180.0)
+# define radiansToDegrees(angleRadians) ((angleRadians) * 180.0 / M_PI)
 
 /*
 ** Structs
+*/
+
+/*
+** Position of the cursor.
+*/
+
+typedef struct		s_mouse
+{
+	int				x;
+	int				y;
+}					t_mouse;
+
+/*
+** margin_x and margin_y are the position where I start to draw.
+** scale is the zoom: if scale = 10, the distance between two points will be 10.
+*/
+
+typedef struct		s_cam
+{
+	int				margin_x;
+	int				margin_y;
+	unsigned char	scale;
+}					t_cam;
+
+/*
+** I read x, y, z from the file and store them in a s_point.
+** Data are not changed when I draw the pixel. New x, y are calculated
+** on the fly.
 */
 
 typedef struct		s_point
@@ -53,18 +83,29 @@ typedef struct		s_point
 	int 			z;
 }					t_point;
 
+/*
+** Here is where I store the data of our height map.
+** width (x) and height (y) are the number of points in the corresponding axis.
+** file is a where I store the z value of each point.
+** points is where I store the calculated x, y, z of each point.
+*/
+
 typedef struct		s_map
 {
 	int				width;
 	int				height;
 	int				depth_min;
 	int				depth_max;
-	int				margin_x;
-	int				margin_y;
-	unsigned char	scale;
 	int				**file;
 	t_point			*points;
 }					t_map;
+
+/*
+** Here is where our image is stored.
+** ptr is created with mlx_new_image(mlx, W_WIDTH, W_HEIGHT)
+** pixels is created with (int *)mlx_get_data_addr(image->ptr,
+				&image->bits_per_pixel, &image->size_line, &image->endian)
+*/
 
 typedef struct		s_img
 {
@@ -76,24 +117,35 @@ typedef struct		s_img
 
 }					t_img;
 
-typedef struct		s_view
+typedef struct		s_global
 {
 	void			*mlx;
 	void			*window;
 	t_img			image;
 	t_map			map;
+	t_cam			cam;
 	t_keys			key;
 	t_clicks		click;
-	int				mouse_x;
-	int				mouse_y;
+	t_mouse			mouse;
 	int				timestamp_lastrefresh;
-}					t_view;
+}					t_global;
+
+/*
+** calculate.c
+*/
+void 				calculate_points(t_map *map, t_cam *cam);
 
 /*
 ** clicks.c
 */
 void				clicks_init(t_clicks *click);
 void				click_toggle(t_clicks *click, int keycode, int toggle);
+
+/*
+** draw.c
+*/
+void				draw_map(int *pixels, t_point *points, t_map *map);
+void				draw_ui(t_global *g);
 
 /*
 ** debug.c
@@ -104,31 +156,31 @@ void 				print_points(t_map *map);
 /*
 ** hooks_init.c
 */
-void				set_hooks(t_view *v);
+void				set_hooks(t_global *g);
 
 /*
 ** hooks_keyboard.c
 */
-int					key_press_hook(int keycode, t_view *v);
-int					key_release_hook(int keycode, t_view *v);
+int					key_press_hook(int keycode, t_global *g);
+int					key_release_hook(int keycode, t_global *g);
 
 /*
 ** hooks_mouse.c
 */
-int					mouse_press_hook(int keycode, int x, int y, t_view *v);
-int					mouse_release_hook(int keycode, int x, int y, t_view *v);
-int					motion_hook(int x, int y, t_view *v);
+int					mouse_press_hook(int keycode, int x, int y, t_global *g);
+int					mouse_release_hook(int keycode, int x, int y, t_global *g);
+int					motion_hook(int x, int y, t_global *g);
 
 /*
 ** hooks_others.c
 */
-int					loop_hook(t_view *v);
-int					exit_hook(int keycode, t_view *v);
+int					loop_hook(t_global *g);
+int					exit_hook(int keycode, t_global *g);
 
 /*
 ** image.c
 */
-void				create_image(void *mlx, t_img *image);
+void				mlx_create_image(void *mlx, t_img *image);
 
 /*
 ** import.c
@@ -138,7 +190,7 @@ int					import_from_file(char const *filename, t_map *map);
 /*
 ** init.c
 */
-t_view				*init_view(void);
+t_global			*init_global(void);
 
 /*
 ** keys.c
@@ -150,16 +202,5 @@ void				key_toggle(t_keys *key, int keycode, int toggle);
 ** main.c
 */
 void				error(char *msg);
-
-/*
-** map.c
-*/
-void				fill_map(t_map *map, t_list *l);
-
-/*
-** render.c
-*/
-void				render_map(int *pixels, t_point	*points, t_map *map);
-void 				calculate_points(t_map *map);
 
 #endif
