@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:36:18 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 23:39:47 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 20:54:21 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,21 +30,10 @@ t_global	*init_global(void)
 	if ((g->window = mlx_new_window(g->mlx, W_WIDTH, W_HEIGHT,
 						"FdF Reader")) == NULL)
 		error("error: mlx_new_window() failed");
-	g->cam.margin_x = 300;
+
+	g->cam.margin_x = 0;
 	g->cam.margin_y = 0;
 	g->cam.scale = 14;
-
-	g->cam.angle_x_1 = 30;
-	g->cam.angle_x_2 = 30 + 120;
-	g->cam.angle_x_3 = 30 - 120;
-
-	g->cam.angle_y_1 = 30;
-	g->cam.angle_y_2 = 30 + 120;
-	g->cam.angle_y_3 = 30 - 120;
-
-
-
-
 
 	g->map.width = 0;
 	g->map.height = 0;

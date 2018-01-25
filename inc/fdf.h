@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 23:13:06 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 20:58:44 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,8 +31,8 @@
 /*
 ** Constants
 */
-# define W_WIDTH 1920
-# define W_HEIGHT 1080
+# define W_WIDTH 2560
+# define W_HEIGHT 1400
 
 /*
 ** Macros
@@ -66,16 +66,6 @@ typedef struct		s_cam
 	int				margin_x;
 	int				margin_y;
 	unsigned char	scale;
-	int				angle_x_1;
-	int				angle_x_2;
-	int				angle_x_3;
-	int				angle_x_4;
-	int				angle_x_5;
-	int				angle_y_1;
-	int				angle_y_2;
-	int				angle_y_3;
-	int				angle_y_4;
-	int				angle_y_5;
 }					t_cam;
 
 /*
@@ -135,13 +125,12 @@ typedef struct		s_global
 	t_keys			key;
 	t_clicks		click;
 	t_mouse			mouse;
-	int				timestamp_lastrefresh;
 }					t_global;
 
 /*
 ** calculate.c
 */
-void				to_isometric_2d(t_point *point, t_cam *cam);
+void				to_isometric_2d(t_point *point);
 void				calculate_points(t_map *map, t_cam *cam);
 
 /*

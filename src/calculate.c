@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 13:25:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 23:38:24 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 20:53:46 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@
 ** sin(sqrt(1)) = 30 degres
 */
 
-void			to_isometric_2d(t_point *point, t_cam *cam)
+void			to_isometric_2d(t_point *point)
 {
 	int		x;
 	int		y;
@@ -29,33 +29,30 @@ void			to_isometric_2d(t_point *point, t_cam *cam)
 	y = point->y;
 	z = point->z;
 
-	point->x = x * cos(DEGTORAD(cam->angle_x_1)) + y * cos(DEGTORAD(cam->angle_x_2)) +
-				z * cos(DEGTORAD(cam->angle_x_3));
-	point->y = x * sin(DEGTORAD(cam->angle_y_1)) + y * sin(DEGTORAD(cam->angle_y_2)) +
-				z * sin(DEGTORAD(cam->angle_y_3));
-	/*point->x = x * cos(DEGTORAD(30)) + y * cos(DEGTORAD(30 + 120)) +
+	point->x = x * cos(DEGTORAD(30)) + y * cos(DEGTORAD(30 + 120)) +
 				z * cos(DEGTORAD(30 - 120));
 	point->y = x * sin(DEGTORAD(30)) + y * sin(DEGTORAD(30 + 120)) +
-				z * sin(DEGTORAD(30 - 120));*/
+				z * sin(DEGTORAD(30 - 120));
 }
+
 
 void			calculate_points(t_map *map, t_cam *cam)
 {
 	int		i;
 	int		j;
 
-	map->points = (t_point *)ft_memalloc(map->width * map->height *
-					sizeof(t_point));
+	if (!map->points)
+		map->points = (t_point *)ft_memalloc(map->width * map->height * sizeof(t_point));
 	i = 0;
 	while (i < map->height)
 	{
 		j = 0;
 		while (j < map->width)
 		{
-			map->points[i * map->width + j].x = j * cam->scale + cam->margin_x;
-			map->points[i * map->width + j].y = i * cam->scale + cam->margin_y;
-			map->points[i * map->width + j].z = map->file[i][j] * cam->scale;
-			to_isometric_2d(&map->points[i * map->width + j], cam);
+			map->points[i * map->width + j].x = j * cam->scale + cam->margin_x + cam->margin_y + W_WIDTH/2;
+			map->points[i * map->width + j].y = i * cam->scale + cam->margin_y - cam->margin_x;
+			map->points[i * map->width + j].z = map->file[i][j] * cam->scale / 10;
+			to_isometric_2d(&map->points[i * map->width + j]);
 			j++;
 		}
 		i++;

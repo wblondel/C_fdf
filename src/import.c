@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 13:52:26 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 21:40:25 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/25 16:24:36 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,8 +77,10 @@ static int		count_lines(int const fd)
 
 	nblines = 0;
 	while (get_next_line(fd, &line) == 1)
+	{
 		nblines++;
-	ft_strdel(&line);
+		ft_strdel(&line);
+	}
 	return (nblines);
 }
 
