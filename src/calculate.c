@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 13:25:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/26 22:08:10 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/26 23:01:58 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,16 +29,18 @@ void			to_isometric_2d(t_point *point)
 	y = point->y;
 	z = point->z;
 
-	point->x = x * cos(DEGTORAD(30)) + y * cos(DEGTORAD(30 + 120)) +
+	/*point->x = x * cos(DEGTORAD(30)) + y * cos(DEGTORAD(30 + 120)) +
 				z * cos(DEGTORAD(30 - 120));
 	point->y = x * sin(DEGTORAD(30)) + y * sin(DEGTORAD(30 + 120)) +
-				z * sin(DEGTORAD(30 - 120));
-	/*point->x = x * cos(0.5235987756) + y * cos(2.617993878) +
-				z * cos(-1.5707963268);
-	point->y = x * sin(0.5235987756) + y * sin(2.617993878) +
-				z * sin(-1.5707963268);*/
+				z * sin(DEGTORAD(30 - 120));*/
+
+	point->x = x * 0.86602540378 + y * -0.86602540378 + z * 0;
+	point->y = x * 0.5 + y * 0.5 + z * -1;
 }
 
+/*
+** Used the first time and when zooming.
+*/
 
 void			calculate_points(t_map *map, t_cam *cam)
 {
@@ -64,4 +66,12 @@ void			calculate_points(t_map *map, t_cam *cam)
 		}
 		i++;
 	}
+}
+
+/*
+** Used when we move the map.
+*/
+void 		move_points(int vx, int vy)
+{
+
 }

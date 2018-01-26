@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:31:12 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/26 19:48:09 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/26 22:25:14 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,10 +36,10 @@ int		key_press_hook(int keycode, t_global *g)
 	if (g->key.s)
 		cam_set_margin(&g->cam, g->cam.margin_x, g->cam.margin_y -= 15);
 
-	if (g->key.f)
+	/*if (g->key.f)
 		print_map(&g->map);
 	if (g->key.p)
-		print_points(&g->map);
+		print_points(&g->map);*/
 	return (0);
 }
 
