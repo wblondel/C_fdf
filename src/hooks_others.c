@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:32:52 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 20:52:05 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/26 20:30:07 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,10 +41,32 @@
 
 int		loop_hook(t_global *g)
 {
+	struct timespec t;
+
+	clock_gettime(CLOCK_REALTIME, &t);
+	g->ts_mlx_create_image_start = t.tv_sec * INT64_C(1000) + t.tv_nsec / 1000000;
 	mlx_create_image(g->mlx, &g->image);
+	clock_gettime(CLOCK_REALTIME, &t);
+	g->ts_mlx_create_image_end = t.tv_sec * INT64_C(1000) + t.tv_nsec / 1000000;
+
+	clock_gettime(CLOCK_REALTIME, &t);
+	g->ts_calculate_points_start = t.tv_sec * INT64_C(1000) + t.tv_nsec / 1000000;
 	calculate_points(&g->map, &g->cam);
+	clock_gettime(CLOCK_REALTIME, &t);
+	g->ts_calculate_points_end = t.tv_sec * INT64_C(1000) + t.tv_nsec / 1000000;
+
+	clock_gettime(CLOCK_REALTIME, &t);
+	g->ts_draw_map_start = t.tv_sec * INT64_C(1000) + t.tv_nsec / 1000000;
 	draw_map(g->image.pixels, g->map.points, &g->map);
+	clock_gettime(CLOCK_REALTIME, &t);
+	g->ts_draw_map_end = t.tv_sec * INT64_C(1000) + t.tv_nsec / 1000000;
+
+	clock_gettime(CLOCK_REALTIME, &t);
+	g->ts_mlx_put_image_to_window_start = t.tv_sec * INT64_C(1000) + t.tv_nsec / 1000000;
 	mlx_put_image_to_window(g->mlx, g->window, g->image.ptr, 0, 0);
+	clock_gettime(CLOCK_REALTIME, &t);
+	g->ts_mlx_put_image_to_window_end = t.tv_sec * INT64_C(1000) + t.tv_nsec / 1000000;
+
 	draw_ui(g);
 	mlx_destroy_image(g->mlx, g->image.ptr);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:37:40 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 15:53:28 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/26 20:34:51 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,10 +29,17 @@ t_point			new_point(x, y, z)
 
 void			draw_ui(t_global *g)
 {
+	/*
+	** Scale
+	*/
 	mlx_string_put(g->mlx, g->window, 10, W_HEIGHT - 30, 0xFFFFFF,
 					"Scale:");
 	mlx_string_put(g->mlx, g->window, 80, W_HEIGHT - 30, 0xFFFFFF,
 					ft_itoa(g->cam.scale));
+
+	/*
+	** Margin
+	*/
 	mlx_string_put(g->mlx, g->window, 120, W_HEIGHT - 30, 0xFFFFFF,
 					"Margin X:");
 	mlx_string_put(g->mlx, g->window, 220, W_HEIGHT - 30, 0xFFFFFF,
@@ -41,10 +48,37 @@ void			draw_ui(t_global *g)
 					"Margin Y:");
 	mlx_string_put(g->mlx, g->window, 360, W_HEIGHT - 30, 0xFFFFFF,
 					ft_itoa(g->cam.margin_y));
-	mlx_string_put(g->mlx, g->window, 490, W_HEIGHT - 30, 0xFFFFFF,
+
+	/*
+	** Mouse coordinates
+	*/
+	mlx_string_put(g->mlx, g->window, W_WIDTH - 120, W_HEIGHT - 30, 0xFFFFFF,
 					ft_itoa(g->mouse.x));
-	mlx_string_put(g->mlx, g->window, 550, W_HEIGHT - 30, 0xFFFFFF,
+	mlx_string_put(g->mlx, g->window, W_WIDTH - 60, W_HEIGHT - 30, 0xFFFFFF,
 					ft_itoa(g->mouse.y));
+
+	/*
+	** Time to calculate
+	*/
+	mlx_string_put(g->mlx, g->window, W_WIDTH - 320, 0, 0xFFFFFF,
+					"mlx_create_image:");
+	mlx_string_put(g->mlx, g->window, W_WIDTH - 50, 0, 0xFFFFFF,
+					ft_itoa(g->ts_mlx_create_image_end - g->ts_mlx_create_image_start));
+
+	mlx_string_put(g->mlx, g->window, W_WIDTH - 320, 20, 0xFFFFFF,
+					"calculate_points:");
+	mlx_string_put(g->mlx, g->window, W_WIDTH - 50, 20, 0xFFFFFF,
+					ft_itoa(g->ts_calculate_points_end - g->ts_calculate_points_start));
+
+	mlx_string_put(g->mlx, g->window, W_WIDTH - 320, 40, 0xFFFFFF,
+					"draw_map:");
+	mlx_string_put(g->mlx, g->window, W_WIDTH - 50, 40, 0xFFFFFF,
+					ft_itoa(g->ts_draw_map_end - g->ts_draw_map_start));
+
+	mlx_string_put(g->mlx, g->window, W_WIDTH - 320, 60, 0xFFFFFF,
+					"mlx_put_image_to_window:");
+	mlx_string_put(g->mlx, g->window, W_WIDTH - 50, 60, 0xFFFFFF,
+					ft_itoa(g->ts_mlx_put_image_to_window_end - g->ts_mlx_put_image_to_window_start));
 
 	/*mlx_string_put(g->mlx, g->window, W_WIDTH - 260, 0, 0xFFFFFF, "Angles pour calc x:");
 	mlx_string_put(g->mlx, g->window, W_WIDTH - 260, 20, 0xFFFFFF, "Angle 1    ++    --");

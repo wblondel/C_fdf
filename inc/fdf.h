@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/25 20:58:44 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/01/26 22:10:34 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,11 +28,14 @@
 # include "keys.h"
 # include "clicks.h"
 
+#include <time.h>
+#include <stdint.h>
+
 /*
 ** Constants
 */
-# define W_WIDTH 2560
-# define W_HEIGHT 1400
+# define W_WIDTH 1920
+# define W_HEIGHT 1080
 
 /*
 ** Macros
@@ -125,6 +128,14 @@ typedef struct		s_global
 	t_keys			key;
 	t_clicks		click;
 	t_mouse			mouse;
+	int64_t			ts_mlx_create_image_start;
+	int64_t			ts_mlx_create_image_end;
+	int64_t			ts_calculate_points_start;
+	int64_t			ts_calculate_points_end;
+	int64_t			ts_draw_map_start;
+	int64_t			ts_draw_map_end;
+	int64_t			ts_mlx_put_image_to_window_start;
+	int64_t			ts_mlx_put_image_to_window_end;
 }					t_global;
 
 /*
@@ -154,7 +165,7 @@ void				print_points(t_map *map);
 /*
 ** draw_map.c
 */
-void				draw_pixel(int y, int x, int *pixels);
+int					draw_pixel(int y, int x, int *pixels);
 void				draw_line(t_point point0, t_point point1, int *pixels);
 void				draw_lines(int *pixels, t_point *points, t_map *map);
 void				draw_points(int *pixels, t_point *points, t_map *map);
