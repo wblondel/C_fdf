@@ -16,7 +16,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 ## Flags for the C preprocessor
-CPPFLAGS = -I$(INC_PATH)
+CPPFLAGS = -I$(INC_PATH) -Ilibft/inc
 
 ## Libraries path
 LDFLAGS = -L$(LIBFT_PATH) -L$(LIBMLX_PATH)
@@ -40,8 +40,7 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 INC_PATH = inc
-HEADER = $(INC_PATH)/clicks.h $(INC_PATH)/fdf.h $(INC_PATH)/keys.h\
-			$(INC_PATH)/libft.h $(INC_PATH)/mlx.h
+HEADER = $(INC_PATH)/clicks.h $(INC_PATH)/fdf.h $(INC_PATH)/keys.h $(INC_PATH)/mlx.h
 
 LIBFT_PATH = libft
 LIBMLX_PATH = libmlx

@@ -45,7 +45,7 @@ static int		read_file(int const fd, t_map *map)
 
 	yx[0] = 0;
 	map->file = (int**)ft_memalloc(map->height * sizeof(int*));
-	while (get_next_line(fd, &line) == 1)
+	while (ft_readline(fd, &line) == 1)
 	{
 		yx[1] = 0;
 		split = ft_strsplit(line, ' ');
@@ -76,7 +76,7 @@ static int		count_lines(int const fd)
 	char	*line;
 
 	nblines = 0;
-	while (get_next_line(fd, &line) == 1)
+	while (ft_readline(fd, &line) == 1)
 	{
 		nblines++;
 		ft_strdel(&line);
