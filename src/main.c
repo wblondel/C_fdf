@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:55:32 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 12:07:57 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/03/08 06:46:25 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,6 +32,9 @@ void	error(char *msg)
 int		main(int argc, char **argv)
 {
 	t_global	*g;
+
+	printf("My process ID: %d\n", getpid());
+	getchar();
 
 	if (argc != 2)
 		error("error: not enough arguments.");

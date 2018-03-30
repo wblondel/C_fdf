@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 13:25:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/26 23:01:58 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/02/07 10:34:11 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -71,7 +71,7 @@ void			calculate_points(t_map *map, t_cam *cam)
 /*
 ** Used when we move the map.
 */
-void 		move_points(int vx, int vy)
+/*void 		move_points(int vx, int vy)
 {
 
-}
+}*/

@@ -12,7 +12,7 @@
 # **************************************************************************** #
 
 # Compiler configuration
-#CC = gcc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 ## Flags for the C preprocessor
