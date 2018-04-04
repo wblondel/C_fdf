@@ -6,7 +6,7 @@
 #    By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/08 06:50:34 by wblondel     #+#   ##    ##    #+#        #
-#    Updated: 2018/01/24 21:01:21 by wblondel    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/04/04 21:41:31 by wblondel    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -43,7 +43,7 @@ INC_PATH = inc
 HEADER = $(INC_PATH)/clicks.h $(INC_PATH)/fdf.h $(INC_PATH)/keys.h $(INC_PATH)/mlx.h
 
 LIBFT_PATH = libft
-LIBMLX_PATH = libmlx
+LIBMLX_PATH = minilibx
 
 FRAMEWORKS = -framework OpenGL -framework AppKit
 
