@@ -1,5 +1,5 @@
 [submodule "minilibx"]
-	path = minilibx
+	path = libmlx
 	url = git@github.com:wblondel/minilibx_macos.git
 [submodule "libft"]
 	path = libft
