@@ -32,3 +32,11 @@ void	cam_set_height_multiplicator(t_cam *cam, float height_multiplicator)
 {
 	cam->height_multiplicator = height_multiplicator;
 }
+
+void	cam_reset(t_cam *cam)
+{
+	cam->margin_x = 0;
+	cam->margin_y = 0;
+	cam->scale = 50;
+	cam->height_multiplicator = 0.1;
+}
