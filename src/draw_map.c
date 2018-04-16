@@ -17,17 +17,34 @@
 ** Draws a pixel.
 */
 
-int		draw_pixel(int y, int x, int *pixels)
+int		draw_pixel(int y, int x, int color, int *pixels)
 {
 	int ipixel;
 
 	ipixel = y * W_WIDTH + x;
 	if (y < W_HEIGHT && y > 0 && x < W_WIDTH && x > 0)
 	{
-		pixels[ipixel] = 0x6379FF;
+		pixels[ipixel] = color;
 		return (0);
 	}
 	return (-1);
+}
+
+/*
+** Draws a rectangle.
+*/
+
+void		draw_rectangle(t_point point0, t_point point1, int *pixels)
+{
+	int y_start;
+
+	y_start = point0.y;
+	while (y_start <= point1.y)
+	{
+		draw_line(new_point(point0.x, y_start, 0, 0x5856d6),
+					new_point(point1.x, y_start, 0, 0x5856d6), pixels);
+		y_start++;
+	}
 }
 
 /*
@@ -53,7 +70,7 @@ void		draw_line(t_point point0, t_point point1, int *pixels)
 	v[4] = (v[0] > v[2] ? v[0] : -v[2]) / 2;
 	while (1)
 	{
-		draw_pixel(point0.y, point0.x, pixels);
+		draw_pixel(point0.y, point0.x, point0.color, pixels);
 		if (point0.x == point1.x && point0.y == point1.y)
 			break ;
 		v[5] = v[4];
@@ -123,12 +140,13 @@ void		draw_lines(int *pixels, t_point *points, t_map *map)
 ** Draws all the single points.
 */
 
-void		draw_points(int *pixels, t_point *points, t_map *map)
+/*void		draw_points(int *pixels, t_point *points, t_map *map)
 {
 	int i;
 	int j;
 	int pos_x;
 	int pos_y;
+	int color;
 
 	i = 0;
 	while (i < map->height)
@@ -138,12 +156,13 @@ void		draw_points(int *pixels, t_point *points, t_map *map)
 		{
 			pos_x = points[i * map->width + j].x;
 			pos_y = points[i * map->width + j].y;
-			draw_pixel(pos_y, pos_x, pixels);
+			color = 0x6379FF;
+			draw_pixel(pos_y, pos_x, color, pixels);
 			j++;
 		}
 		i++;
 	}
-}
+}*/
 
 /*
 ** Entry point for drawing the map.

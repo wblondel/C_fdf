@@ -88,6 +88,7 @@ typedef struct		s_point
 	int				x;
 	int				y;
 	int				z;
+	int				color;
 }					t_point;
 
 /*
@@ -173,7 +174,8 @@ void				print_points(t_map *map);
 /*
 ** draw_map.c
 */
-int					draw_pixel(int y, int x, int *pixels);
+int					draw_pixel(int y, int x, int color, int *pixels);
+void				draw_rectangle(t_point point0, t_point point1, int *pixels);
 void				draw_line(t_point point0, t_point point1, int *pixels);
 void				draw_lines(int *pixels, t_point *points, t_map *map);
 void				draw_points(int *pixels, t_point *points, t_map *map);
@@ -183,7 +185,8 @@ void				draw_map(int *pixels, t_point *points, t_map *map);
 ** draw_ui.c
 */
 void				draw_ui(t_global *g);
-void				draw_ui2(t_global *g);
+void				draw_help(t_global *g);
+t_point				new_point(int x, int y, int z, int color);
 
 /*
 ** hooks_init.c

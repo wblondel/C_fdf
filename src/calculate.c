@@ -60,6 +60,7 @@ void			calculate_points(t_map *map, t_cam *cam)
 				map->points[i * map->width + j].x = j * cam->scale + cam->margin_x + cam->margin_y + W_WIDTH/2;
 				map->points[i * map->width + j].y = i * cam->scale + cam->margin_y - cam->margin_x;
 				map->points[i * map->width + j].z = map->file[i][j] * cam->scale * cam->height_multiplicator;
+				map->points[i * map->width + j].color = 0x6379FF;
 				to_isometric_2d(&map->points[i * map->width + j]);
 			/*}*/
 			j++;

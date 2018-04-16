@@ -49,6 +49,9 @@ int		loop_hook(t_global *g)
 	clock_gettime(CLOCK_REALTIME, &t);
 	g->ts_mlx_create_image_end = t.tv_sec * INT64_C(1000) + t.tv_nsec / 1000000;
 
+	if (g->key.tab)
+		draw_help(g);
+
 	clock_gettime(CLOCK_REALTIME, &t);
 	g->ts_calculate_points_start = t.tv_sec * INT64_C(1000) + t.tv_nsec / 1000000;
 	calculate_points(&g->map, &g->cam);

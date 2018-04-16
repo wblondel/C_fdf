@@ -13,13 +13,14 @@
 
 #include "fdf.h"
 
-t_point			new_point(x, y, z)
+t_point			new_point(int x, int y, int z, int color)
 {
 	t_point point;
 
 	point.x = x;
 	point.y = y;
 	point.z = z;
+	point.color = color;
 	return (point);
 }
 
@@ -87,6 +88,13 @@ void			draw_ui(t_global *g)
 					"mlx_put_image_to_window:");
 	mlx_string_put(g->mlx, g->window, W_WIDTH - 50, 60, 0xFFFFFF,
 					ft_itoa(g->ts_mlx_put_image_to_window_end - g->ts_mlx_put_image_to_window_start));
+	
+
+	/*
+	** Help
+	*/
+	mlx_string_put(g->mlx, g->window, W_WIDTH - (W_WIDTH / 2) - 20, W_HEIGHT - 30, 0xFFFFFF,
+					"Press TAB for HELP");
 
 	/*mlx_string_put(g->mlx, g->window, W_WIDTH - 260, 0, 0xFFFFFF, "Angles pour calc x:");
 	mlx_string_put(g->mlx, g->window, W_WIDTH - 260, 20, 0xFFFFFF, "Angle 1    ++    --");
@@ -115,10 +123,25 @@ void			draw_ui(t_global *g)
 	mlx_string_put(g->mlx, g->window, W_WIDTH - 40, 230, 0xFFFFFF, ft_itoa(g->cam.angle_y_5));*/
 }
 
-void			draw_ui2(t_global *g)
+/*
+** Draws the HELP window.
+*/
+
+void			draw_help(t_global *g)
+{
+	draw_rectangle(new_point(W_WIDTH / 4, W_HEIGHT / 4, 0, 0x6379FF),
+					new_point(W_WIDTH / 4 * 3, W_HEIGHT / 4 * 3, 0, 0x6379FF), g->image.pixels);
+	/*draw_rectangle(new_point(480, 270, 0), new_point(1440, 810, 0), g->image.pixels);*/
+	/*draw_line(new_point(W_WIDTH - 270, 0, 0), new_point(W_WIDTH - 270, W_HEIGHT, 0), g->image.pixels);
+
+	draw_line(new_point(W_WIDTH - 270, 130, 0), new_point(W_WIDTH, 130, 0), g->image.pixels);
+	draw_line(new_point(W_WIDTH - 270, 260, 0), new_point(W_WIDTH, 260, 0), g->image.pixels);*/
+}
+
+/*void			draw_ui2(t_global *g)
 {
 	draw_line(new_point(W_WIDTH - 270, 0, 0), new_point(W_WIDTH - 270, W_HEIGHT, 0), g->image.pixels);
 
 	draw_line(new_point(W_WIDTH - 270, 130, 0), new_point(W_WIDTH, 130, 0), g->image.pixels);
 	draw_line(new_point(W_WIDTH - 270, 260, 0), new_point(W_WIDTH, 260, 0), g->image.pixels);
-}
+}*/
