@@ -52,9 +52,9 @@ void			draw_ui(t_global *g)
 					"Margin X:");
 	mlx_string_put(g->mlx, g->window, 220, W_HEIGHT - 30, 0xFFFFFF,
 					ft_itoa(g->cam.margin_x));
-	mlx_string_put(g->mlx, g->window, 260, W_HEIGHT - 30, 0xFFFFFF,
+	mlx_string_put(g->mlx, g->window, 280, W_HEIGHT - 30, 0xFFFFFF,
 					"Margin Y:");
-	mlx_string_put(g->mlx, g->window, 360, W_HEIGHT - 30, 0xFFFFFF,
+	mlx_string_put(g->mlx, g->window, 380, W_HEIGHT - 30, 0xFFFFFF,
 					ft_itoa(g->cam.margin_y));
 
 	/*
