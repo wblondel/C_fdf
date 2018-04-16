@@ -27,3 +27,8 @@ void	cam_set_scale(t_cam *cam, int scale)
 		scale = 255;
 	cam->scale = scale;
 }
+
+void	cam_set_height_multiplicator(t_cam *cam, float height_multiplicator)
+{
+	cam->height_multiplicator = height_multiplicator;
+}

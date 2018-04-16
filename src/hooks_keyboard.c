@@ -36,6 +36,11 @@ int		key_press_hook(int keycode, t_global *g)
 	if (g->key.s)
 		cam_set_margin(&g->cam, g->cam.margin_x, g->cam.margin_y -= 15);
 
+	if (g->key.plus)
+		cam_set_height_multiplicator(&g->cam, g->cam.height_multiplicator + 0.01);
+	if (g->key.minus)
+		cam_set_height_multiplicator(&g->cam, g->cam.height_multiplicator - 0.01);
+
 	/*if (g->key.f)
 		print_map(&g->map);
 	if (g->key.p)

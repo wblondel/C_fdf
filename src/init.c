@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:36:18 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/26 20:40:39 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/16 17:27:19 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,6 +35,7 @@ t_global	*init_global(void)
 	g->cam.margin_x = 0;
 	g->cam.margin_y = 0;
 	g->cam.scale = 50;
+	g->cam.height_multiplicator = 0.1;
 
 	g->map.width = 0;
 	g->map.height = 0;
