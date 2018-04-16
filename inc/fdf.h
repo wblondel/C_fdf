@@ -155,6 +155,7 @@ void				calculate_points(t_map *map, t_cam *cam);
 */
 void				cam_set_margin(t_cam *cam, int x, int y);
 void				cam_set_scale(t_cam *cam, int scale);
+void				cam_set_height_multiplicator(t_cam *cam, float height_multiplicator);
 
 /*
 ** clicks.c
