@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:37:40 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/26 20:34:51 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/19 20:19:38 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,7 +36,7 @@ void			draw_ui(t_global *g)
 	mlx_string_put(g->mlx, g->window, 10, W_HEIGHT - 50, 0xFFFFFF,
 					"Height mult.:");
 	mlx_string_put(g->mlx, g->window, 160, W_HEIGHT - 50, 0xFFFFFF,
-					ft_itoa(g->cam.height_multiplicator*100));
+					ft_itoa(g->cam.height_multiplier));
 
 	/*
 	** Scale

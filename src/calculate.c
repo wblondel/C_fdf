@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 13:25:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/16 17:26:46 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/19 20:40:12 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -59,7 +59,7 @@ void			calculate_points(t_map *map, t_cam *cam)
 			{*/
 				map->points[i * map->width + j].x = j * cam->scale + cam->margin_x + cam->margin_y + W_WIDTH/2;
 				map->points[i * map->width + j].y = i * cam->scale + cam->margin_y - cam->margin_x;
-				map->points[i * map->width + j].z = map->file[i][j] * cam->scale * cam->height_multiplicator;
+				map->points[i * map->width + j].z = map->file[i][j] * cam->scale * ((float)cam->height_multiplier / 30);
 				map->points[i * map->width + j].color = 0x6379FF;
 				to_isometric_2d(&map->points[i * map->width + j]);
 			/*}*/
