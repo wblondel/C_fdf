@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:31:34 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/26 19:48:05 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/19 22:10:43 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,6 +42,23 @@ int		mouse_release_hook(int keycode, int x, int y, t_global *g)
 
 int		motion_hook(int x, int y, t_global *g)
 {
+	if (g->click.left)
+	{
+		if (x < 0 || y < 0 || x > W_WIDTH || y > W_HEIGHT)
+		{
+			click_toggle(&g->click, CLICK_LEFT, 0);
+		}
+		else
+		{
+			if ( abs(g->mouse.y - y) < 20 )
+			{
+				if (g->mouse.x < x)
+					ft_putstr("Rotating anti-clockwise\n");
+				else if (g->mouse.x > x)
+					ft_putstr("Rotating clockwise\n");
+			}
+		}
+	}
 	g->mouse.x = x;
 	g->mouse.y = y;
 	return (0);
