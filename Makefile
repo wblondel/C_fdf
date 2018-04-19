@@ -6,7 +6,7 @@
 #    By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/08 06:50:34 by wblondel     #+#   ##    ##    #+#        #
-#    Updated: 2018/04/04 22:43:34 by wblondel    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/04/19 19:55:07 by wblondel    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -16,7 +16,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 ## Flags for the C preprocessor
-CPPFLAGS = -I$(INC_PATH) -Ilibft/inc
+CPPFLAGS = -I$(INC_PATH) -Ilibft/inc -Ilibmlx
 
 ## Libraries path
 LDFLAGS = -L$(LIBFT_PATH) -L$(LIBMLX_PATH)
@@ -40,7 +40,7 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 INC_PATH = inc
-HEADER = $(INC_PATH)/clicks.h $(INC_PATH)/fdf.h $(INC_PATH)/keys.h $(INC_PATH)/mlx.h
+HEADER = $(INC_PATH)/clicks.h $(INC_PATH)/fdf.h $(INC_PATH)/keys.h
 
 LIBFT_PATH = libft
 LIBMLX_PATH = libmlx
