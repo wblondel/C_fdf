@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/16 17:27:41 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/19 19:23:58 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,11 +18,11 @@
 /*
 ** Includes
 */
-# include "basics/memory.h"
-# include "basics/chars.h"
-# include "basics/strings.h"
-# include "basics/numbers.h"
-# include "utils/file.h"
+# include "libft/basics/memory.h"
+# include "libft/basics/chars.h"
+# include "libft/basics/strings.h"
+# include "libft/basics/numbers.h"
+# include "libft/utils/file.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <errno.h>
