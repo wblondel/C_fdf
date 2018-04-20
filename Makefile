@@ -47,11 +47,6 @@ LIBMLX_PATH = libmlx
 
 FRAMEWORKS = -framework OpenGL -framework AppKit
 
-# Tracks malloc() and free()
-ifdef ALLOCWRAP
-	LDFLAGS += $(HOME)/lib/alloc_wrap.c -ldl
-endif
-
 # Entry point
 all: $(NAME)
 
