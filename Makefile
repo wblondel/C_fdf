@@ -13,7 +13,7 @@
 
 # Compiler configuration
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -O2
 
 ## Flags for the C preprocessor
 CPPFLAGS = -I$(INC_PATH) -Ilibft/inc -Ilibmlx
