@@ -34,7 +34,7 @@ int		main(int argc, char **argv)
 	t_global	*g;
 
 	printf("My process ID: %d\n", getpid());
-	getchar();
+	/*getchar();*/
 
 	if (argc != 2)
 		error("error: not enough arguments.");
