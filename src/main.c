@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:55:32 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/03/08 06:46:25 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/08 17:56:27 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,11 +33,8 @@ int		main(int argc, char **argv)
 {
 	t_global	*g;
 
-	printf("My process ID: %d\n", getpid());
-	/*getchar();*/
-
 	if (argc != 2)
-		error("error: not enough arguments.");
+		error("Error: No file passed.");
 	g = init_global();
 	ft_putstr("Importing from file...\n");
 	if ((import_from_file(argv[1], &g->map) == -1))
