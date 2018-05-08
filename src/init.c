@@ -6,12 +6,24 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:36:18 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/19 20:20:42 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/08 18:03:06 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void		set_default_values(t_global *g)
+{
+	g->cam.margin_x = 0;
+	g->cam.margin_y = 0;
+	g->cam.scale = 50;
+	g->cam.height_multiplier = 1;
+	g->map.width = -1;
+	g->map.height = 0;
+	g->map.depth_min = 0;
+	g->map.depth_max = 0;
+}
 
 /*
 ** First you need to call mlx_init and store its return value.
@@ -31,16 +43,7 @@ t_global	*init_global(void)
 						"FdF Reader")) == NULL)
 		error("error: mlx_new_window() failed");
 	mlx_create_image(g->mlx, &g->image);
-
-	g->cam.margin_x = 0;
-	g->cam.margin_y = 0;
-	g->cam.scale = 50;
-	g->cam.height_multiplier = 1;
-
-	g->map.width = 0;
-	g->map.height = 0;
-	g->map.depth_min = 0;
-	g->map.depth_max = 0;
+	set_default_values(g);
 	keys_init(&g->key);
 	clicks_init(&g->click);
 	return (g);
