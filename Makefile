@@ -6,7 +6,7 @@
 #    By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/08 06:50:34 by wblondel     #+#   ##    ##    #+#        #
-#    Updated: 2018/04/19 19:55:07 by wblondel    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/05/08 15:19:02 by wblondel    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -25,7 +25,7 @@ LDFLAGS = -L$(LIBFT_PATH) -L$(LIBMLX_PATH)
 LDLIBS = -lft -lmlx -lm
 
 ## Name of the executable
-NAME = mlx
+NAME = fdf
 
 # Project related variable
 SRC_PATH = src
