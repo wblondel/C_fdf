@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 13:25:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/09 15:01:52 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/09 15:55:27 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,7 +38,13 @@ static void		to_isometric_2d(t_point *point)
 }
 
 /*
-** Used the first time and when zooming.
+** Function:	calculate_points
+** -----------------------------
+**		Calculates the coordinates of each point, based on the given scale
+**		and the given margins, and converts them into isometric 2D.
+**
+**		map: our map struct
+**		cam: our cam struct
 */
 
 void			calculate_points(t_map *map, t_cam *cam)
