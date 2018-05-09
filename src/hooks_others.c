@@ -6,36 +6,14 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:32:52 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/08 18:27:02 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/09 15:23:22 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-/*
-** Cette partie doit se retrouver dans la fonction de creation d'image
-**if (v->mouse_x && v->mouse_y)
-**{
-**	if (v->mouse_x > W_WIDTH || v->mouse_y > W_HEIGHT ||
-**		v->mouse_x < 0 || v->mouse_y < 0)
-**	{
-**		clicks_init(&v->click);
-**	}
-**	if (v->click.left)
-**	{
-**		if (v->mouse_x < x)
-**			ft_putstr("Rotating anti-clockwise\n");
-**		else if (v->mouse_x > x)
-**			ft_putstr("Rotating clockwise\n");
-**		v->mouse_x = x;
-**		v->mouse_y = y;
-**	}
-**}
-*/
-
-
-int64_t		get_time(void)
+static int64_t		get_time(void)
 {
 	struct timespec t;
 
@@ -48,7 +26,7 @@ int64_t		get_time(void)
 ** Good.
 */
 
-int		loop_hook(t_global *g)
+int					loop_hook(t_global *g)
 {
 	g->ts_mlx_create_image_start = get_time();
 	mlx_create_image(g->mlx, &g->image);
@@ -59,7 +37,7 @@ int		loop_hook(t_global *g)
 	calculate_points(&g->map, &g->cam);
 	g->ts_calculate_points_end = get_time();
 	g->ts_draw_map_start = get_time();
-	draw_map(g->image.pixels, g->map.points, &g->map);
+	draw_lines(g->image.pixels, g->map.points, &g->map);
 	g->ts_draw_map_end = get_time();
 	g->ts_mlx_put_image_to_window_start = get_time();
 	mlx_put_image_to_window(g->mlx, g->window, g->image.ptr, 0, 0);
@@ -83,25 +61,9 @@ int		loop_hook(t_global *g)
 ** paging operations, cache misses, and cache evictions.
 */
 
-int		exit_hook(int keycode, t_global *g)
+int					exit_hook(int keycode, t_global *g)
 {
 	(void)g;
 	(void)keycode;
-	/*int i;
-
-	i = 0;*/
-	/*if (keycode == KEY_ESC)
-	{
-		mlx_destroy_window(g->mlx, g->window);
-		free(g->mlx);
-		if (g->map.points)
-			free(g->map.points);
-		while (i < g->map.height)
-		{
-			free(g->map.file[i]);
-			i++;
-		}
-		free(g);
-	}*/
 	exit(EXIT_SUCCESS);
 }

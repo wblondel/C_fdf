@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/19 20:18:58 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/09 15:07:25 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -148,7 +148,6 @@ typedef struct		s_global
 /*
 ** calculate.c
 */
-void				to_isometric_2d(t_point *point);
 void				calculate_points(t_map *map, t_cam *cam);
 
 /*
@@ -172,21 +171,22 @@ void				print_map(t_map *map);
 void				print_points(t_map *map);
 
 /*
+** draw.c
+*/
+
+void				draw_line(t_point point0, t_point point1, int *pixels);
+void				draw_rectangle(t_point point0, t_point point1, int *pixels);
+
+/*
 ** draw_map.c
 */
-int					draw_pixel(int y, int x, int color, int *pixels);
-void				draw_rectangle(t_point point0, t_point point1, int *pixels);
-void				draw_line(t_point point0, t_point point1, int *pixels);
 void				draw_lines(int *pixels, t_point *points, t_map *map);
-void				draw_points(int *pixels, t_point *points, t_map *map);
-void				draw_map(int *pixels, t_point *points, t_map *map);
 
 /*
 ** draw_ui.c
 */
 void				draw_ui(t_global *g);
 void				draw_help(t_global *g);
-t_point				new_point(int x, int y, int z, int color);
 
 /*
 ** hooks_init.c
@@ -234,8 +234,9 @@ void				keys_init(t_keys *key);
 void				key_toggle(t_keys *key, int keycode, int toggle);
 
 /*
-** main.c
+** utils.c
 */
+t_point				new_point(int x, int y, int z, int color);
 void				error(char *msg);
 
 #endif

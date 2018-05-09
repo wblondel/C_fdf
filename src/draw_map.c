@@ -6,92 +6,14 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:42:45 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/26 21:19:03 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/09 15:29:59 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-/*
-** Draws a pixel.
-*/
-
-int		draw_pixel(int y, int x, int color, int *pixels)
-{
-	int ipixel;
-
-	ipixel = y * W_WIDTH + x;
-	if (y < W_HEIGHT && y > 0 && x < W_WIDTH && x > 0)
-	{
-		pixels[ipixel] = color;
-		return (0);
-	}
-	return (-1);
-}
-
-/*
-** Draws a rectangle.
-*/
-
-void		draw_rectangle(t_point point0, t_point point1, int *pixels)
-{
-	int y_start;
-
-	y_start = point0.y;
-	while (y_start <= point1.y)
-	{
-		draw_line(new_point(point0.x, y_start, 0, 0x5856d6),
-					new_point(point1.x, y_start, 0, 0x5856d6), pixels);
-		y_start++;
-	}
-}
-
-/*
-** Draws a line between 2 points.
-** v[0] = dx
-** v[1] = sx
-** v[2] = dy
-** v[3] = sy
-** v[4] = err
-** v[5] = e2
-**
-** https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#C
-*/
-
-void		draw_line(t_point point0, t_point point1, int *pixels)
-{
-	int		v[6];
-
-	v[0] = abs(point1.x - point0.x);
-	v[1] = point0.x < point1.x ? 1 : -1;
-	v[2] = abs(point1.y - point0.y);
-	v[3] = point0.y < point1.y ? 1 : -1;
-	v[4] = (v[0] > v[2] ? v[0] : -v[2]) / 2;
-	while (1)
-	{
-		draw_pixel(point0.y, point0.x, point0.color, pixels);
-		if (point0.x == point1.x && point0.y == point1.y)
-			break ;
-		v[5] = v[4];
-		if (v[5] > -v[0])
-		{
-			v[4] -= v[2];
-			point0.x += v[1];
-		}
-		if (v[5] < v[2])
-		{
-			v[4] += v[0];
-			point0.y += v[3];
-		}
-	}
-}
-
-/*
-** Draws all the lines between points.
-*/
-
-void		draw_lines(int *pixels, t_point *points, t_map *map)
+static void			draw_lines_1(int *pixels, t_point *points, t_map *map)
 {
 	int		i;
 	int		j;
@@ -102,7 +24,7 @@ void		draw_lines(int *pixels, t_point *points, t_map *map)
 		j = -1;
 		while (++j < map->width - 1)
 		{
-			if ( (points[i * map->width + j + 1].y < W_HEIGHT &&
+			if ((points[i * map->width + j + 1].y < W_HEIGHT &&
 				points[i * map->width + j + 1].y > 0 &&
 				points[i * map->width + j + 1].x < W_WIDTH &&
 				points[i * map->width + j + 1].x > 0) ||
@@ -111,17 +33,25 @@ void		draw_lines(int *pixels, t_point *points, t_map *map)
 				points[i * map->width + j].x < W_WIDTH &&
 				points[i * map->width + j].x > 0))
 			{
-				draw_line(points[i * map->width + j], points[i * map->width + j + 1], pixels);
+				draw_line(points[i * map->width + j],
+						points[i * map->width + j + 1], pixels);
 			}
 		}
 	}
+}
+
+static void			draw_lines_2(int *pixels, t_point *points, t_map *map)
+{
+	int		i;
+	int		j;
+
 	i = -1;
 	while (++i < map->height - 1)
 	{
 		j = -1;
 		while (++j < map->width)
 		{
-			if ( (points[(i + 1) * map->width + j].y < W_HEIGHT &&
+			if ((points[(i + 1) * map->width + j].y < W_HEIGHT &&
 				points[(i + 1) * map->width + j].y > 0 &&
 				points[(i + 1) * map->width + j].x < W_WIDTH &&
 				points[(i + 1) * map->width + j].x > 0) ||
@@ -130,47 +60,19 @@ void		draw_lines(int *pixels, t_point *points, t_map *map)
 				points[i * map->width + j].x < W_WIDTH &&
 				points[i * map->width + j].x > 0))
 			{
-				draw_line(points[i * map->width + j], points[(i + 1) * map->width + j], pixels);
+				draw_line(points[i * map->width + j],
+						points[(i + 1) * map->width + j], pixels);
 			}
 		}
 	}
 }
 
 /*
-** Draws all the single points.
+** Draws all the lines between points.
 */
 
-/*void		draw_points(int *pixels, t_point *points, t_map *map)
+void				draw_lines(int *pixels, t_point *points, t_map *map)
 {
-	int i;
-	int j;
-	int pos_x;
-	int pos_y;
-	int color;
-
-	i = 0;
-	while (i < map->height)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			pos_x = points[i * map->width + j].x;
-			pos_y = points[i * map->width + j].y;
-			color = 0x6379FF;
-			draw_pixel(pos_y, pos_x, color, pixels);
-			j++;
-		}
-		i++;
-	}
-}*/
-
-/*
-** Entry point for drawing the map.
-** It first draws the points, and then the lines.
-*/
-
-void		draw_map(int *pixels, t_point *points, t_map *map)
-{
-	/*draw_points(pixels, points, map);*/
-	draw_lines(pixels, points, map);
+	draw_lines_1(pixels, points, map);
+	draw_lines_2(pixels, points, map);
 }

@@ -6,14 +6,14 @@
 #    By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2017/12/08 06:50:34 by wblondel     #+#   ##    ##    #+#        #
-#    Updated: 2018/05/08 15:21:02 by wblondel    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/05/09 15:01:05 by wblondel    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 # Compiler configuration
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -O2
+CFLAGS = -Wall -Wextra -Werror -O2 $(debug)
 
 ## Flags for the C preprocessor
 CPPFLAGS = -I$(INC_PATH) -Ilibft/inc -Ilibmlx
@@ -29,9 +29,9 @@ NAME = fdf
 
 # Project related variable
 SRC_PATH = src
-SRC_NAME = calculate.c cam.c clicks.c debug.c draw_map.c draw_ui.c hooks_init.c\
-			hooks_keyboard.c hooks_mouse.c hooks_others.c image.c import.c\
-			init.c keys.c main.c
+SRC_NAME = calculate.c cam.c clicks.c debug.c draw.c draw_map.c draw_ui.c\
+			hooks_init.c hooks_keyboard.c hooks_mouse.c hooks_others.c image.c\
+			import.c init.c keys.c main.c utils.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

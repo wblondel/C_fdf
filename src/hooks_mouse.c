@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:31:34 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/19 22:10:43 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/09 15:20:00 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,7 +50,7 @@ int		motion_hook(int x, int y, t_global *g)
 		}
 		else
 		{
-			if ( abs(g->mouse.y - y) < 20 )
+			if (abs(g->mouse.y - y) < 20)
 			{
 				if (g->mouse.x < x)
 					ft_putstr("Rotating anti-clockwise\n");

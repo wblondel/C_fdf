@@ -16,6 +16,7 @@ add_executable(mlx2
         src/cam.c
         src/clicks.c
         src/debug.c
+		src/draw.c
         src/draw_map.c
         src/draw_ui.c
         src/hooks_init.c
@@ -27,4 +28,5 @@ add_executable(mlx2
         src/init.c
         src/keys.c
         src/main.c
+		src/utils.c
         )

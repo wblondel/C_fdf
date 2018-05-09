@@ -6,14 +6,14 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:36:18 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/08 18:03:06 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/09 15:06:04 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		set_default_values(t_global *g)
+static void	set_default_values(t_global *g)
 {
 	g->cam.margin_x = 0;
 	g->cam.margin_y = 0;
