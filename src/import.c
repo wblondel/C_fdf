@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 13:52:26 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/08 18:19:12 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/09 17:05:01 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,6 +34,16 @@ static int		open_file(char const *filename)
 }
 
 /*
+** Sets the map->width. Function created to comply with the norms...
+*/
+
+static void		set_map_width(t_map *map, int yx[2])
+{
+	map->width = (map->width == -1) ? yx[1] : MIN(yx[1], map->width);
+	(map->width == 0) ? error("Error: invalid file") : map->width;
+}
+
+/*
 ** We read the file that is behind the file descriptor fd.
 */
 
@@ -52,8 +62,7 @@ static void		read_file(int const fd, t_map *map)
 		ft_strdel(&line);
 		while (split[yx[1]])
 			yx[1]++;
-		map->width = (map->width == -1) ? yx[1] : MIN(yx[1], map->width);
-		(map->width == 0) ? error("Error: invalid file") : map->width;
+		set_map_width(map, yx);
 		yx[1] = -1;
 		map->file[yx[0]] = (int *)ft_memalloc(map->width * sizeof(int));
 		while (split[++yx[1]])
@@ -64,6 +73,7 @@ static void		read_file(int const fd, t_map *map)
 		free(split);
 		yx[0]++;
 	}
+	ft_strdel(&line);
 }
 
 /*
@@ -81,6 +91,7 @@ static int		count_lines(int const fd)
 		nblines++;
 		ft_strdel(&line);
 	}
+	ft_strdel(&line);
 	return (nblines);
 }
 
