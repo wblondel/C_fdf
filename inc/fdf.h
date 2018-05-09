@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/09 15:07:25 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/09 16:20:30 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -155,7 +155,8 @@ void				calculate_points(t_map *map, t_cam *cam);
 */
 void				cam_set_margin(t_cam *cam, int x, int y);
 void				cam_set_scale(t_cam *cam, int scale);
-void				cam_set_height_multiplier(t_cam *cam, int height_multiplier);
+void				cam_set_height_multiplier(t_cam *cam,
+												int height_multiplier);
 void				cam_reset(t_cam *cam);
 
 /*
