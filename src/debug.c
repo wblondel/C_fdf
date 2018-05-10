@@ -6,12 +6,20 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 10:22:40 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 20:38:19 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/10 17:15:12 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+/*
+** Function:	print_map
+** ----------------------
+**		Prints the map as read from the file.
+**
+**		map: the map.
+*/
 
 void				print_map(t_map *map)
 {
@@ -38,6 +46,14 @@ void				print_map(t_map *map)
 	}
 	ft_putchar('\n');
 }
+
+/*
+** Function:	print_points
+** -------------------------
+**		Prints the points' coordinates.
+**
+**		map: the map.
+*/
 
 void				print_points(t_map *map)
 {

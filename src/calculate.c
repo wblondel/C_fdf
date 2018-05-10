@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 13:25:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/09 15:55:27 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/10 16:16:43 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,14 +14,11 @@
 #include "fdf.h"
 
 /*
-** α = 30 degres
-** cos(sqrt(3)) = 30 degres
-** sin(sqrt(1)) = 30 degres
+** Function:	to_isometric_2d
+** ----------------------------
+**		Converts a 3D point to a 2D point in an isometric projection.
 **
-** point->x = x * cos(DEGTORAD(30)) + y * cos(DEGTORAD(30 + 120)) +
-**		z * cos(DEGTORAD(30 - 120));
-** point->y = x * sin(DEGTORAD(30)) + y * sin(DEGTORAD(30 + 120)) +
-**		z * sin(DEGTORAD(30 - 120));
+**		point: the point to convert
 */
 
 static void		to_isometric_2d(t_point *point)
@@ -33,8 +30,10 @@ static void		to_isometric_2d(t_point *point)
 	x = point->x;
 	y = point->y;
 	z = point->z;
-	point->x = x * 0.86602540378 + y * -0.86602540378 + z * 0;
-	point->y = x * 0.5 + y * 0.5 + z * -1;
+	point->x = x * cos(DEGTORAD(30)) + y * cos(DEGTORAD(30 + 120))
+									+ z * cos(DEGTORAD(30 - 120));
+	point->y = x * sin(DEGTORAD(30)) + y * sin(DEGTORAD(30 + 120))
+									+ z * sin(DEGTORAD(30 - 120));
 }
 
 /*

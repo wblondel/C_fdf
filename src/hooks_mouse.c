@@ -6,12 +6,25 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:31:34 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/09 15:20:00 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/10 18:48:19 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+/*
+** Function:	mouse_press_hook
+** -----------------------------
+**		Executes an action when a button on the mouse is pressed.
+**
+**		keycode: keycode of the pressed button.
+**		x: the mouse's X coordinate.
+**		y: the mouse's Y coordinate.
+**		g: our global structure.
+**
+**		Returns: 0.
+*/
 
 int		mouse_press_hook(int keycode, int x, int y, t_global *g)
 {
@@ -32,6 +45,19 @@ int		mouse_press_hook(int keycode, int x, int y, t_global *g)
 	return (0);
 }
 
+/*
+** Function:	mouse_release_hook
+** -------------------------------
+**		Executes an action when a button on the mouse is released.
+**
+**		keycode: keycode of the released button.
+**		x: the mouse's X coordinate.
+**		y: the mouse's Y coordinate.
+**		g: our global structure.
+**
+**		Returns: 0.
+*/
+
 int		mouse_release_hook(int keycode, int x, int y, t_global *g)
 {
 	(void)x;
@@ -39,6 +65,18 @@ int		mouse_release_hook(int keycode, int x, int y, t_global *g)
 	click_toggle(&g->click, keycode, 0);
 	return (0);
 }
+
+/*
+** Function:	motion_hook
+** ------------------------
+**		Executes an action when the mouse is moved.
+**
+**		x: the mouse's X coordinate.
+**		y: the mouse's Y coordinate.
+**		g: our global structure.
+**
+**		Returns: 0.
+*/
 
 int		motion_hook(int x, int y, t_global *g)
 {

@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:37:40 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/09 14:23:11 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/10 18:26:30 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,10 +14,14 @@
 #include "fdf.h"
 
 /*
-** Draws the UI: Part One
-** - Height multiplier
-** - Scale
-** - Mouse coordinates
+** Function:	draw_ui_1
+** ----------------------
+**		Draws the UI: Part One
+**		- Height multiplier
+**		- Scale
+**		- Mouse coordinates
+**
+**		g: our global structure.
 */
 
 static void		draw_ui_1(t_global *g)
@@ -50,9 +54,13 @@ static void		draw_ui_1(t_global *g)
 }
 
 /*
-** Draws the UI: Part Two
-** - Margins
-** - Timer for mlx_create_image()
+** Function:	draw_ui_2
+** ----------------------
+**		Draws the UI: Part Two
+**		- Margins
+**		- Timer for mlx_create_image()
+**
+**		g: our global structure.
 */
 
 static void		draw_ui_2(t_global *g)
@@ -83,10 +91,14 @@ static void		draw_ui_2(t_global *g)
 }
 
 /*
-** Draws the UI: Part Three
-** - Timer for calculate_points()
-** - Timer for draw_map()
-** - Timer for mlx_put_image_to_window()
+** Function:	draw_ui_3
+** ----------------------
+**		Draws the UI: Part Three
+**		- Timer for calculate_points()
+**		- Timer for draw_map()
+**		- Timer for mlx_put_image_to_window()
+**
+**		g: our global structure.
 */
 
 static void		draw_ui_3(t_global *g)
@@ -118,7 +130,11 @@ static void		draw_ui_3(t_global *g)
 }
 
 /*
-** Draws the UI.
+** Function:	draw_ui
+** --------------------
+**		Draws the entire UI.
+**
+**		g: our global structure.
 */
 
 void			draw_ui(t_global *g)
@@ -128,15 +144,4 @@ void			draw_ui(t_global *g)
 	draw_ui_3(g);
 	mlx_string_put(g->mlx, g->window, W_WIDTH - (W_WIDTH / 2) - 20,
 			W_HEIGHT - 30, 0xFFFFFF, "Press TAB for HELP");
-}
-
-/*
-** Draws the HELP window.
-*/
-
-void			draw_help(t_global *g)
-{
-	draw_rectangle(new_point(W_WIDTH / 4, W_HEIGHT / 4, 0, 0x6379FF),
-					new_point(W_WIDTH / 4 * 3, W_HEIGHT / 4 * 3, 0, 0x6379FF),
-					g->image.pixels);
 }

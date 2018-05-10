@@ -6,14 +6,24 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:42:45 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/09 15:29:59 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/10 18:14:07 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void			draw_lines_1(int *pixels, t_point *points, t_map *map)
+/*
+** Function:	draw_horizontal_lines
+** ----------------------------------
+**		Draws the horizontal lines between all the points.
+**
+**		pixels: our array of pixels.
+**		points: our array of points.
+**		map: our map.
+*/
+
+static void		draw_horizontal_lines(int *pixels, t_point *points, t_map *map)
 {
 	int		i;
 	int		j;
@@ -40,7 +50,17 @@ static void			draw_lines_1(int *pixels, t_point *points, t_map *map)
 	}
 }
 
-static void			draw_lines_2(int *pixels, t_point *points, t_map *map)
+/*
+** Function:	draw_vertical_lines
+** --------------------------------
+**		Draws the vertical lines between all the points.
+**
+**		pixels: our array of pixels.
+**		points: our array of points.
+**		map: our map.
+*/
+
+static void		draw_vertical_lines(int *pixels, t_point *points, t_map *map)
 {
 	int		i;
 	int		j;
@@ -68,11 +88,17 @@ static void			draw_lines_2(int *pixels, t_point *points, t_map *map)
 }
 
 /*
-** Draws all the lines between points.
+** Function:	draw_map
+** ---------------------
+**		Draws the lines between all the points.
+**
+**		pixels: our array of pixels.
+**		points: our array of points.
+**		map: our map.
 */
 
-void				draw_lines(int *pixels, t_point *points, t_map *map)
+void			draw_map(int *pixels, t_point *points, t_map *map)
 {
-	draw_lines_1(pixels, points, map);
-	draw_lines_2(pixels, points, map);
+	draw_horizontal_lines(pixels, points, map);
+	draw_vertical_lines(pixels, points, map);
 }

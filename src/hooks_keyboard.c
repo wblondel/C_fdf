@@ -6,12 +6,23 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:31:12 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/08 17:18:44 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/10 18:46:23 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+/*
+** Function:	key_press_hook
+** ---------------------------
+**		Executes an action when a key on the keyboard is pressed.
+**
+**		keycode: keycode of the pressed key.
+**		g: our global structure.
+**
+**		Returns: 0.
+*/
 
 int		key_press_hook(int keycode, t_global *g)
 {
@@ -38,6 +49,17 @@ int		key_press_hook(int keycode, t_global *g)
 		print_points(&g->map);
 	return (0);
 }
+
+/*
+** Function:	key_release_hook
+** -----------------------------
+**		Executes an action when a key on the keyboard is released.
+**
+**		keycode: keycode of the released key.
+**		g: our global structure.
+**
+**		Returns: 0.
+*/
 
 int		key_release_hook(int keycode, t_global *g)
 {

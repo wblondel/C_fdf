@@ -6,7 +6,7 @@
 /*   By: wblondel <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/09 14:46:58 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/09 15:20:29 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/10 17:36:52 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,17 @@
 #include "fdf.h"
 
 /*
-** Draws a pixel.
+** Function:	draw_pixel
+** -----------------------
+**		Draws a pixel.
+**
+**		y: the point's Y coordinate.
+**		x: the point's X coordinate.
+**		color: the point's color (RGB - hexadecimal).
+**		pixels: our array of pixels.
+**
+**		Returns: 0 if the point was drawn,
+**				 1 if the coordinates are out of the window.
 */
 
 static int		draw_pixel(int y, int x, int color, int *pixels)
@@ -31,15 +41,17 @@ static int		draw_pixel(int y, int x, int color, int *pixels)
 }
 
 /*
-** Draws a line between 2 points.
-** v[0] = dx
-** v[1] = sx
-** v[2] = dy
-** v[3] = sy
-** v[4] = err
-** v[5] = e2
+** Function:	draw_line
+** ----------------------
+**		Draws a line between 2 points.
 **
-** https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#C
+**		point0: the point where we start drawing.
+**		point1: the point where we stop drawing.
+**		pixels: our array of pixels.
+**
+**		v[0] = dx; v[1] = sx; v[2] = dy
+**		v[3] = sy; v[4] = err; v[5] = e2
+**		https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#C
 */
 
 void			draw_line(t_point point0, t_point point1, int *pixels)
@@ -71,7 +83,13 @@ void			draw_line(t_point point0, t_point point1, int *pixels)
 }
 
 /*
-** Draws a rectangle.
+** Function:	draw_rectangle
+** ---------------------------
+**		Draws a rectangle.
+**
+**		point0: the top-left corner's coordinates.
+**		point1: the bottom-right corner's coordinates.
+**		pixels: our array of pixels.
 */
 
 void			draw_rectangle(t_point point0, t_point point1, int *pixels)

@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/09 16:20:30 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/10 18:30:09 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -181,13 +181,13 @@ void				draw_rectangle(t_point point0, t_point point1, int *pixels);
 /*
 ** draw_map.c
 */
-void				draw_lines(int *pixels, t_point *points, t_map *map);
+void				draw_map(int *pixels, t_point *points, t_map *map);
 
 /*
 ** draw_ui.c
 */
 void				draw_ui(t_global *g);
-void				draw_help(t_global *g);
+void				draw_ui_help(t_global *g);
 
 /*
 ** hooks_init.c

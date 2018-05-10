@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 13:40:45 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/01/24 20:42:08 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/10 19:03:11 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,6 +14,13 @@
 #include "fdf.h"
 
 /*
+** Function:	mlx_create_image
+** -----------------------------
+**		Creates an empty mlx_image.
+**
+**		mlx: the screen connection identifier.
+**		image: our image global structure.
+**
 ** Now the important part :
 ** mlx_get_data_addr will return a char * that is 4 time the width * height of
 ** your image.
