@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:55:32 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 14:27:01 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:19:32 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,13 +16,13 @@
 /*
 ** Function:	main
 ** -----------------
-**		Initialises our environment, imports the map from a file,
-**		and creates the GUI.
+**	Initialises our environment, imports the map from a file,
+**	and creates the GUI.
 **
-**		argc: number of arguments passed (including the binary name).
-**		argv: array of aguments.
+**	argc: number of arguments passed (including the binary name).
+**	argv: array of aguments.
 **
-**		Returns: 0 (isn't reached anyway).
+**	Returns: 0 (isn't reached anyway).
 */
 
 int		main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 13:19:53 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 14:23:31 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:19:23 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,9 +16,9 @@
 /*
 ** Function:	keys_init_split
 ** ----------------------------
-**		Initializes all the keyboard-related toggle switches to 0. - Part Two
+**	Initializes all the keyboard-related toggle switches to 0. - Part Two
 **
-**		key: structure containing all the keyboard-related toggle switches.
+**	key: structure containing all the keyboard-related toggle switches.
 */
 
 static void		key_init_split(t_keys *key)
@@ -53,9 +53,9 @@ static void		key_init_split(t_keys *key)
 /*
 ** Function:	keys_init
 ** ----------------------
-**		Initializes all the keyboard-related toggle switches to 0. - Part One
+**	Initializes all the keyboard-related toggle switches to 0. - Part One
 **
-**		key: structure containing all the keyboard-related toggle switches.
+**	key: structure containing all the keyboard-related toggle switches.
 */
 
 void			keys_init(t_keys *key)
@@ -88,11 +88,11 @@ void			keys_init(t_keys *key)
 /*
 ** Function:	key_toggle_split_one
 ** ---------------------------------
-**		Sets a keyboard-related toggle switch. -- Part One
+**	Sets a keyboard-related toggle switch. -- Part One
 **
-**		key: structure containing all the keyboard-related toggle switches.
-**		keycode: keycode of the pressed key.
-**		toggle: value to set the toggle to (usually 0 or 1).
+**	key: structure containing all the keyboard-related toggle switches.
+**	keycode: keycode of the pressed key.
+**	toggle: value to set the toggle to (usually 0 or 1).
 */
 
 static void		key_toggle_split_one(t_keys *key, int keycode, int toggle)
@@ -127,11 +127,11 @@ static void		key_toggle_split_one(t_keys *key, int keycode, int toggle)
 /*
 ** Function:	key_toggle_split_two
 ** ---------------------------------
-**		Sets a keybord-related toggle switch. -- Part Two
+**	Sets a keybord-related toggle switch. -- Part Two
 **
-**		key: structure containing all the keyboard-related toggle switches.
-**		keycode: keycode of the pressed key.
-**		toggle: value to set the toggle to (usually 0 or 1).
+**	key: structure containing all the keyboard-related toggle switches.
+**	keycode: keycode of the pressed key.
+**	toggle: value to set the toggle to (usually 0 or 1).
 */
 
 static void		key_toggle_split_two(t_keys *key, int keycode, int toggle)
@@ -163,11 +163,11 @@ static void		key_toggle_split_two(t_keys *key, int keycode, int toggle)
 /*
 ** Function:	key_toggle
 ** -----------------------
-**		Sets a keyboard-related toggle switch. -- Main function
+**	Sets a keyboard-related toggle switch. -- Main function
 **
-**		key: structure containing all the keyboard-related toggle switches.
-**		keycode: keycode of the pressed key.
-**		toggle: value to set the toggle to (usually 0 or 1).
+**	key: structure containing all the keyboard-related toggle switches.
+**	keycode: keycode of the pressed key.
+**	toggle: value to set the toggle to (usually 0 or 1).
 */
 
 void			key_toggle(t_keys *key, int keycode, int toggle)

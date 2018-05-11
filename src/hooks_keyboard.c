@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:31:12 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 20:09:11 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:16:45 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,12 +16,12 @@
 /*
 ** Function:	key_press_hook
 ** ---------------------------
-**		Executes an action when a key on the keyboard is pressed.
+**	Executes an action when a key on the keyboard is pressed.
 **
-**		keycode: keycode of the pressed key.
-**		g: our global structure.
+**	keycode: keycode of the pressed key.
+**	g: our global structure.
 **
-**		Returns: 0.
+**	Returns: 0.
 */
 
 int		key_press_hook(int keycode, t_global *g)
@@ -53,12 +53,12 @@ int		key_press_hook(int keycode, t_global *g)
 /*
 ** Function:	key_release_hook
 ** -----------------------------
-**		Executes an action when a key on the keyboard is released.
+**	Executes an action when a key on the keyboard is released.
 **
-**		keycode: keycode of the released key.
-**		g: our global structure.
+**	keycode: keycode of the released key.
+**	g: our global structure.
 **
-**		Returns: 0.
+**	Returns: 0.
 */
 
 int		key_release_hook(int keycode, t_global *g)

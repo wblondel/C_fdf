@@ -6,7 +6,7 @@
 /*   By: wblondel <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/10 18:23:54 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 18:47:34 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:16:25 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,9 +16,9 @@
 /*
 ** Function:	draw_ui_help
 ** -------------------------
-**		Draws the Help UI.
+**	Draws the Help UI.
 **
-**		g: our global structure.
+**	g: our global structure.
 */
 
 void	draw_ui_help(t_global *g)

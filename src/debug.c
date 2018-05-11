@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/22 10:22:40 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 17:15:12 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:14:04 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,12 +16,12 @@
 /*
 ** Function:	print_map
 ** ----------------------
-**		Prints the map as read from the file.
+**	Prints the map as read from the file.
 **
-**		map: the map.
+**	map: the map.
 */
 
-void				print_map(t_map *map)
+void	print_map(t_map *map)
 {
 	int		i;
 	int		j;
@@ -50,15 +50,15 @@ void				print_map(t_map *map)
 /*
 ** Function:	print_points
 ** -------------------------
-**		Prints the points' coordinates.
+**	Prints the points' coordinates.
 **
-**		map: the map.
+**	map: the map.
 */
 
-void				print_points(t_map *map)
+void	print_points(t_map *map)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (i < map->height)

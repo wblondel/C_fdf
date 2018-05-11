@@ -6,7 +6,7 @@
 /*   By: wblondel <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/09 14:46:58 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 18:23:25 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:14:42 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,18 +16,18 @@
 /*
 ** Function:	draw_pixel
 ** -----------------------
-**		Draws a pixel.
+**	Draws a pixel.
 **
-**		y: the point's Y coordinate.
-**		x: the point's X coordinate.
-**		color: the point's color (RGB - hexadecimal).
-**		pixels: our array of pixels.
+**	y: the point's Y coordinate.
+**	x: the point's X coordinate.
+**	color: the point's color (RGB - hexadecimal).
+**	pixels: our array of pixels.
 **
-**		Returns: 0 if the point was drawn,
-**				 1 if the coordinates are out of the window.
+**	Returns: 0 if the point was drawn,
+**			 1 if the coordinates are out of the window.
 */
 
-static int		draw_pixel(int y, int x, int color, int *pixels)
+static int	draw_pixel(int y, int x, int color, int *pixels)
 {
 	int		ipixel;
 
@@ -43,18 +43,18 @@ static int		draw_pixel(int y, int x, int color, int *pixels)
 /*
 ** Function:	draw_line
 ** ----------------------
-**		Draws a line between 2 points.
+**	Draws a line between 2 points.
 **
-**		point0: the point where we start drawing.
-**		point1: the point where we stop drawing.
-**		pixels: our array of pixels.
+**	point0: the point where we start drawing.
+**	point1: the point where we stop drawing.
+**	pixels: our array of pixels.
 **
-**		v[0] = dx; v[1] = sx; v[2] = dy
-**		v[3] = sy; v[4] = err; v[5] = e2
-**		https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#C
+**	v[0] = dx; v[1] = sx; v[2] = dy
+**	v[3] = sy; v[4] = err; v[5] = e2
+**	https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#C
 */
 
-void			draw_line(t_3dpoint point0, t_3dpoint point1, int *pixels)
+void		draw_line(t_3dpoint point0, t_3dpoint point1, int *pixels)
 {
 	int		v[6];
 
@@ -85,14 +85,14 @@ void			draw_line(t_3dpoint point0, t_3dpoint point1, int *pixels)
 /*
 ** Function:	draw_rectangle
 ** ---------------------------
-**		Draws a rectangle.
+**	Draws a rectangle.
 **
-**		point0: the top-left corner's coordinates.
-**		point1: the bottom-right corner's coordinates.
-**		pixels: our array of pixels.
+**	point0: the top-left corner's coordinates.
+**	point1: the bottom-right corner's coordinates.
+**	pixels: our array of pixels.
 */
 
-void			draw_rectangle(t_3dpoint point0, t_3dpoint point1, int *pixels)
+void		draw_rectangle(t_3dpoint point0, t_3dpoint point1, int *pixels)
 {
 	int		y_start;
 

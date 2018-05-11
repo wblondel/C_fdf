@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:37:40 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 19:37:53 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:16:18 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,7 @@
 /*
 ** Function:	put_string
 ** -----------------------
-**		Writes a string on the image.
+**	Writes a string on the image.
 */
 
 static void		mlx_sp(t_global *g, t_2dpoint p, int color, char *string)
@@ -27,12 +27,12 @@ static void		mlx_sp(t_global *g, t_2dpoint p, int color, char *string)
 /*
 ** Function:	draw_ui_1
 ** ----------------------
-**		Draws the UI: Part One
-**		- Height multiplier
-**		- Scale
-**		- Mouse coordinates
+**	Draws the UI: Part One
+**	- Height multiplier
+**	- Scale
+**	- Mouse coordinates
 **
-**		g: our global structure.
+**	g: our global structure.
 */
 
 static void		draw_ui_1(t_global *g)
@@ -61,11 +61,11 @@ static void		draw_ui_1(t_global *g)
 /*
 ** Function:	draw_ui_2
 ** ----------------------
-**		Draws the UI: Part Two
-**		- Margins
-**		- Timer for mlx_create_image()
+**	Draws the UI: Part Two
+**	- Margins
+**	- Timer for mlx_create_image()
 **
-**		g: our global structure.
+**	g: our global structure.
 */
 
 static void		draw_ui_2(t_global *g)
@@ -91,12 +91,12 @@ static void		draw_ui_2(t_global *g)
 /*
 ** Function:	draw_ui_3
 ** ----------------------
-**		Draws the UI: Part Three
-**		- Timer for calculate_points()
-**		- Timer for draw_map()
-**		- Timer for mlx_put_image_to_window()
+**	Draws the UI: Part Three
+**	- Timer for calculate_points()
+**	- Timer for draw_map()
+**	- Timer for mlx_put_image_to_window()
 **
-**		g: our global structure.
+**	g: our global structure.
 */
 
 static void		draw_ui_3(t_global *g)
@@ -128,9 +128,9 @@ static void		draw_ui_3(t_global *g)
 /*
 ** Function:	draw_ui
 ** --------------------
-**		Draws the entire UI.
+**	Draws the entire UI.
 **
-**		g: our global structure.
+**	g: our global structure.
 */
 
 void			draw_ui(t_global *g)

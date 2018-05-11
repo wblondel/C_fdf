@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:58:06 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 21:06:46 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:12:59 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,11 +16,11 @@
 /*
 ** Function:	cam_set_margin
 ** ---------------------------
-**		Sets the margins of our camera.
+**	Sets the margins of our camera.
 **
-**		cam: our camera.
-**		x: the margin in the X axis.
-**		y: the margin in the Y axis.
+**	cam: our camera.
+**	x: the margin in the X axis.
+**	y: the margin in the Y axis.
 */
 
 void	cam_set_margin(t_cam *cam, int x, int y)
@@ -32,10 +32,10 @@ void	cam_set_margin(t_cam *cam, int x, int y)
 /*
 ** Function:	cam_set_scale
 ** --------------------------
-**		Sets the scale of our map.
+**	Sets the scale of our map.
 **
-**		cam: our camera.
-**		scale: the scale to set.
+**	cam: our camera.
+**	scale: the scale to set.
 */
 
 void	cam_set_scale(t_cam *cam, int scale)
@@ -50,10 +50,10 @@ void	cam_set_scale(t_cam *cam, int scale)
 /*
 ** Function:	cam_set_height_multiplier
 ** --------------------------------------
-**		Set the height multiplier of our map.
+**	Set the height multiplier of our map.
 **
-**		cam: our camera.
-**		height_multiplier: the height multiplier to set.
+**	cam: our camera.
+**	height_multiplier: the height multiplier to set.
 */
 
 void	cam_set_height_multiplier(t_cam *cam, int height_multiplier)
@@ -64,10 +64,10 @@ void	cam_set_height_multiplier(t_cam *cam, int height_multiplier)
 /*
 ** Function:	cam_reset
 ** ----------------------
-**		Resets the margins, the scale and the height multiplier to
-**		default values.
+**	Resets the margins, the scale and the height multiplier to
+**	default values.
 **
-**		cam: our camera.
+**	cam: our camera.
 */
 
 void	cam_reset(t_cam *cam)

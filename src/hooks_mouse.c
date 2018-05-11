@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:31:34 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 18:48:19 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:17:16 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,14 +16,14 @@
 /*
 ** Function:	mouse_press_hook
 ** -----------------------------
-**		Executes an action when a button on the mouse is pressed.
+**	Executes an action when a button on the mouse is pressed.
 **
-**		keycode: keycode of the pressed button.
-**		x: the mouse's X coordinate.
-**		y: the mouse's Y coordinate.
-**		g: our global structure.
+**	keycode: keycode of the pressed button.
+**	x: the mouse's X coordinate.
+**	y: the mouse's Y coordinate.
+**	g: our global structure.
 **
-**		Returns: 0.
+**	Returns: 0.
 */
 
 int		mouse_press_hook(int keycode, int x, int y, t_global *g)
@@ -48,14 +48,14 @@ int		mouse_press_hook(int keycode, int x, int y, t_global *g)
 /*
 ** Function:	mouse_release_hook
 ** -------------------------------
-**		Executes an action when a button on the mouse is released.
+**	Executes an action when a button on the mouse is released.
 **
-**		keycode: keycode of the released button.
-**		x: the mouse's X coordinate.
-**		y: the mouse's Y coordinate.
-**		g: our global structure.
+**	keycode: keycode of the released button.
+**	x: the mouse's X coordinate.
+**	y: the mouse's Y coordinate.
+**	g: our global structure.
 **
-**		Returns: 0.
+**	Returns: 0.
 */
 
 int		mouse_release_hook(int keycode, int x, int y, t_global *g)
@@ -69,13 +69,13 @@ int		mouse_release_hook(int keycode, int x, int y, t_global *g)
 /*
 ** Function:	motion_hook
 ** ------------------------
-**		Executes an action when the mouse is moved.
+**	Executes an action when the mouse is moved.
 **
-**		x: the mouse's X coordinate.
-**		y: the mouse's Y coordinate.
-**		g: our global structure.
+**	x: the mouse's X coordinate.
+**	y: the mouse's Y coordinate.
+**	g: our global structure.
 **
-**		Returns: 0.
+**	Returns: 0.
 */
 
 int		motion_hook(int x, int y, t_global *g)

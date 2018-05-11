@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:16:08 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 18:35:10 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:16:31 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,9 +16,9 @@
 /*
 ** Function:	set_hooks
 ** ----------------------
-**		Sets the hooks for keyboard and mouse actions.
+**	Sets the hooks for keyboard and mouse actions.
 **
-**		g: our global structure.
+**	g: our global structure.
 */
 
 void	set_hooks(t_global *g)

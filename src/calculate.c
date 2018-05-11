@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 13:25:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 20:45:00 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:12:31 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,9 +16,9 @@
 /*
 ** Function:	to_isometric_2d
 ** ----------------------------
-**		Converts a 3D point to a 2D point in an isometric projection.
+**	Converts a 3D point to a 2D point in an isometric projection.
 **
-**		point: the point to convert
+**	point: the point to convert
 */
 
 static void		to_isometric_2d(t_3dpoint *point)
@@ -39,11 +39,11 @@ static void		to_isometric_2d(t_3dpoint *point)
 /*
 ** Function:	calculate_points
 ** -----------------------------
-**		Calculates the coordinates of each point, based on the given scale
-**		and the given margins, and converts them into isometric 2D.
+**	Calculates the coordinates of each point, based on the given scale
+**	and the given margins, and converts them into isometric 2D.
 **
-**		map: our map struct
-**		cam: our cam struct
+**	map: our map struct
+**	cam: our cam struct
 */
 
 void			calculate_points(t_map *map, t_cam *cam)

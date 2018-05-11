@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:36:18 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 20:13:31 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:18:57 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,9 +16,9 @@
 /*
 ** Function:	init_values
 ** ------------------------
-**		Initializes the parameters of the camera and the map.
+**	Initializes the parameters of the camera and the map.
 **
-**		g: our global structure.
+**	g: our global structure.
 */
 
 static void	init_values(t_global *g)
@@ -36,9 +36,9 @@ static void	init_values(t_global *g)
 /*
 ** Function:	init_global
 ** ------------------------
-**		Creates a new global structure.
+**	Creates a new global structure.
 **
-**		Returns: a new global structure.
+**	Returns: a new global structure.
 **
 ** First you need to call mlx_init and store its return value.
 ** Now do the same with mlx_new_window

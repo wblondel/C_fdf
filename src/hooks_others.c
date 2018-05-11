@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:32:52 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 19:32:57 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:17:53 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,10 +16,10 @@
 /*
 ** Function:	get_time
 ** ---------------------
-**		Returns the current timestamp.
+**	Returns the current timestamp.
 */
 
-static int64_t		get_time(void)
+static int64_t	get_time(void)
 {
 	struct timespec t;
 
@@ -30,16 +30,16 @@ static int64_t		get_time(void)
 /*
 ** Function:	loop_hook
 ** ----------------------
-**		Perform actions until the program is exited.
+**	Perform actions until the program is exited.
 **
-**		g: our global structure.
+**	g: our global structure.
 **
-**		Returns: 0 (never reached).
+**	Returns: 0 (never reached).
 **
-**		It looks like the minilibx limits the FPS to 60. Good.
+**	It looks like the minilibx limits the FPS to 60. Good.
 */
 
-int					loop_hook(t_global *g)
+int				loop_hook(t_global *g)
 {
 	g->ts_mlx_create_image = get_time();
 	mlx_create_image(g->mlx, &g->image);
@@ -63,12 +63,12 @@ int					loop_hook(t_global *g)
 /*
 ** Function:	exit_hook
 ** ----------------------
-**		Exits the program.
+**	Exits the program.
 **
-**		keycode: keycode of the pressed key.
-**		g: our global structure.
+**	keycode: keycode of the pressed key.
+**	g: our global structure.
 **
-**		Returns: 0.
+**	Returns: 0.
 **
 ** You are correct, no harm is done and it's faster to just exit
 ** There are various reasons for this:
@@ -81,7 +81,7 @@ int					loop_hook(t_global *g)
 ** result in disk paging operations, cache misses, and cache evictions.
 */
 
-int					exit_hook(int keycode, t_global *g)
+int				exit_hook(int keycode, t_global *g)
 {
 	(void)g;
 	(void)keycode;
