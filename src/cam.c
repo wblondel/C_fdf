@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:58:06 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 17:20:36 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 21:06:46 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -59,7 +59,6 @@ void	cam_set_scale(t_cam *cam, int scale)
 void	cam_set_height_multiplier(t_cam *cam, int height_multiplier)
 {
 	cam->height_multiplier = height_multiplier;
-	printf("Height multiplier: %d\n", cam->height_multiplier);
 }
 
 /*
