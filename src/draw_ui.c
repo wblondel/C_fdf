@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:37:40 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 22:16:18 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:32:56 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -109,7 +109,7 @@ static void		draw_ui_3(t_global *g)
 	t_calc_pts = ft_itoa(g->ts_calculate_points);
 	t_draw_map = ft_itoa(g->ts_draw_map);
 	t_mlx_put_image_to_window = ft_itoa(g->ts_mlx_put_image_to_window);
-	t_fps =  ft_itoa(1000 / (g->ts_calculate_points + g->ts_draw_map +
+	t_fps = ft_itoa(1000 / (g->ts_calculate_points + g->ts_draw_map +
 			g->ts_mlx_put_image_to_window));
 	mlx_sp(g, new_2dp_nc(W_WIDTH - 320, 20), WHITE, "calculate_points:");
 	mlx_sp(g, new_2dp_nc(W_WIDTH - 50, 20), WHITE, t_calc_pts);
