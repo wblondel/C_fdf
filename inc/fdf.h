@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 19:33:32 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 22:20:52 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,6 +42,7 @@
 # define W_WIDTH 1920
 # define W_HEIGHT 1080
 # define WHITE 0xFFFFFF
+# define BLACK 0x000000
 
 /*
 ** Macros
