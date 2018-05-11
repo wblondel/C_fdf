@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:31:12 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 18:46:23 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 20:09:11 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,13 +30,13 @@ int		key_press_hook(int keycode, t_global *g)
 	if (g->key.esc)
 		exit_hook(keycode, g);
 	if (g->key.a)
-		cam_set_margin(&g->cam, g->cam.margin_x += 15, g->cam.margin_y);
+		cam_set_margin(&g->cam, g->cam.margin_x += 14, g->cam.margin_y);
 	if (g->key.w)
-		cam_set_margin(&g->cam, g->cam.margin_x, g->cam.margin_y += 15);
+		cam_set_margin(&g->cam, g->cam.margin_x, g->cam.margin_y += 14);
 	if (g->key.s)
-		cam_set_margin(&g->cam, g->cam.margin_x, g->cam.margin_y -= 15);
+		cam_set_margin(&g->cam, g->cam.margin_x, g->cam.margin_y -= 14);
 	if (g->key.d)
-		cam_set_margin(&g->cam, g->cam.margin_x -= 15, g->cam.margin_y);
+		cam_set_margin(&g->cam, g->cam.margin_x -= 14, g->cam.margin_y);
 	if (g->key.plus)
 		cam_set_height_multiplier(&g->cam, g->cam.height_multiplier + 1);
 	if (g->key.minus)
