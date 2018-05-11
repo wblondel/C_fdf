@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 11:45:24 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 17:13:01 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 14:23:25 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@
 ** ------------------------
 **		Initializes all the mouse-related toggle switches to 0.
 **
-**		click: structure containing all the mouse-related  toggle switches.
+**		click: structure containing all the mouse-related toggle switches.
 */
 
 void			clicks_init(t_clicks *click)

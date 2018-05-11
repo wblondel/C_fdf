@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/09 13:52:26 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 19:04:21 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 12:27:28 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,10 +14,14 @@
 #include "fdf.h"
 
 /*
-** We try to open what's behind the filename.
-** If it's a directory, we return -1 to exit.
-** If it's a file, we return the file descriptor.
-** If nothing exists of name filename, we return -1.
+** Function:	open_file
+** ----------------------
+**		Opens what's behind the filename.
+**
+**		filename: the object of the path to open.
+**
+**		Returns: the file descriptor if it's a file,
+**		-1 if it's a directory or if nothing exists at this path.
 */
 
 static int		open_file(char const *filename)
@@ -34,7 +38,12 @@ static int		open_file(char const *filename)
 }
 
 /*
-** Sets the map->width. Function created to comply with the norms...
+** Function:	set_map_width
+** --------------------------
+**		Sets the map->width. Function created to comply with the norms...
+**
+**		map: our map structure.
+**		xy: our indices to navigate in the file and the line read.
 */
 
 static void		set_map_width(t_map *map, int yx[2])
@@ -44,7 +53,13 @@ static void		set_map_width(t_map *map, int yx[2])
 }
 
 /*
-** We read the file that is behind the file descriptor fd.
+** Function:	read_file
+** ----------------------
+**		Reads the map data from the file behind
+**		the given file descriptor.
+**
+**		fd: the file descriptor.
+**		map: our map structure.
 */
 
 static void		read_file(int const fd, t_map *map)
@@ -77,7 +92,13 @@ static void		read_file(int const fd, t_map *map)
 }
 
 /*
-** Count the number of lines in a file.
+** Function:	count_lines
+** ------------------------
+**		Counts the number of lines in a file.
+**
+**		fd: the file descriptor.
+**
+**		Returns: the number of lines.
 */
 
 static int		count_lines(int const fd)
@@ -96,8 +117,14 @@ static int		count_lines(int const fd)
 }
 
 /*
-** We try to open what's behind the filename. See open_file().
-** If OK, we read the file, close the fd, and return the map.
+** Function:	import_from_file
+** -----------------------------
+**		Opens the object behind the filename and reads map data from it.
+**
+**		filename: the file name.
+**		map: our map structure.
+**
+**		Returns: 0 if successful, -1 if failed.
 */
 
 int				import_from_file(char const *filename, t_map *map)
