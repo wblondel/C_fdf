@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 13:25:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 16:16:43 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 18:22:43 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@
 **		point: the point to convert
 */
 
-static void		to_isometric_2d(t_point *point)
+static void		to_isometric_2d(t_3dpoint *point)
 {
 	int		x;
 	int		y;
@@ -52,8 +52,8 @@ void			calculate_points(t_map *map, t_cam *cam)
 	int		j;
 
 	if (!map->points)
-		map->points = (t_point *)ft_memalloc(map->width * map->height *
-															sizeof(t_point));
+		map->points = (t_3dpoint *)ft_memalloc(map->width * map->height *
+															sizeof(t_3dpoint));
 	i = 0;
 	while (i < map->height)
 	{

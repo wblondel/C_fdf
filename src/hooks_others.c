@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/20 16:32:52 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 18:57:31 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 19:32:57 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,20 +41,20 @@ static int64_t		get_time(void)
 
 int					loop_hook(t_global *g)
 {
-	g->ts_mlx_create_image_start = get_time();
+	g->ts_mlx_create_image = get_time();
 	mlx_create_image(g->mlx, &g->image);
-	g->ts_mlx_create_image_end = get_time();
+	g->ts_mlx_create_image = get_time() - g->ts_mlx_create_image;
 	if (g->key.tab)
 		draw_ui_help(g);
-	g->ts_calculate_points_start = get_time();
+	g->ts_calculate_points = get_time();
 	calculate_points(&g->map, &g->cam);
-	g->ts_calculate_points_end = get_time();
-	g->ts_draw_map_start = get_time();
+	g->ts_calculate_points = get_time() - g->ts_calculate_points;
+	g->ts_draw_map = get_time();
 	draw_map(g->image.pixels, g->map.points, &g->map);
-	g->ts_draw_map_end = get_time();
-	g->ts_mlx_put_image_to_window_start = get_time();
+	g->ts_draw_map = get_time() - g->ts_draw_map;
+	g->ts_mlx_put_image_to_window = get_time();
 	mlx_put_image_to_window(g->mlx, g->window, g->image.ptr, 0, 0);
-	g->ts_mlx_put_image_to_window_end = get_time();
+	g->ts_mlx_put_image_to_window = get_time() - g->ts_mlx_put_image_to_window;
 	draw_ui(g);
 	mlx_destroy_image(g->mlx, g->image.ptr);
 	return (0);

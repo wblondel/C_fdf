@@ -6,7 +6,7 @@
 /*   By: wblondel <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/10 18:23:54 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 18:27:22 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 18:47:34 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,7 @@
 
 void	draw_ui_help(t_global *g)
 {
-	draw_rectangle(new_point(W_WIDTH / 4, W_HEIGHT / 4, 0, 0x6379FF),
-					new_point(W_WIDTH / 4 * 3, W_HEIGHT / 4 * 3, 0, 0x6379FF),
+	draw_rectangle(new_3dpoint(W_WIDTH / 4, W_HEIGHT / 4, 0, 0x6379FF),
+					new_3dpoint(W_WIDTH / 4 * 3, W_HEIGHT / 4 * 3, 0, 0x6379FF),
 					g->image.pixels);
 }

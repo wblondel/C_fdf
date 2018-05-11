@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 18:30:09 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 19:33:32 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,6 +41,7 @@
 */
 # define W_WIDTH 1920
 # define W_HEIGHT 1080
+# define WHITE 0xFFFFFF
 
 /*
 ** Macros
@@ -83,13 +84,20 @@ typedef struct		s_cam
 ** on the fly.
 */
 
-typedef struct		s_point
+typedef struct		s_3dpoint
 {
 	int				x;
 	int				y;
 	int				z;
 	int				color;
-}					t_point;
+}					t_3dpoint;
+
+typedef struct		s_2dpoint
+{
+	int				x;
+	int				y;
+	int				color;
+}					t_2dpoint;
 
 /*
 ** Here is where I store the data of our height map.
@@ -105,7 +113,7 @@ typedef struct		s_map
 	int				depth_min;
 	int				depth_max;
 	int				**file;
-	t_point			*points;
+	t_3dpoint		*points;
 }					t_map;
 
 /*
@@ -135,14 +143,10 @@ typedef struct		s_global
 	t_keys			key;
 	t_clicks		click;
 	t_mouse			mouse;
-	int64_t			ts_mlx_create_image_start;
-	int64_t			ts_mlx_create_image_end;
-	int64_t			ts_calculate_points_start;
-	int64_t			ts_calculate_points_end;
-	int64_t			ts_draw_map_start;
-	int64_t			ts_draw_map_end;
-	int64_t			ts_mlx_put_image_to_window_start;
-	int64_t			ts_mlx_put_image_to_window_end;
+	int64_t			ts_mlx_create_image;
+	int64_t			ts_calculate_points;
+	int64_t			ts_draw_map;
+	int64_t			ts_mlx_put_image_to_window;
 }					t_global;
 
 /*
@@ -175,13 +179,14 @@ void				print_points(t_map *map);
 ** draw.c
 */
 
-void				draw_line(t_point point0, t_point point1, int *pixels);
-void				draw_rectangle(t_point point0, t_point point1, int *pixels);
+void				draw_line(t_3dpoint point0, t_3dpoint point1, int *pixels);
+void				draw_rectangle(t_3dpoint point0, t_3dpoint point1,
+								int *pixels);
 
 /*
 ** draw_map.c
 */
-void				draw_map(int *pixels, t_point *points, t_map *map);
+void				draw_map(int *pixels, t_3dpoint *points, t_map *map);
 
 /*
 ** draw_ui.c
@@ -237,7 +242,9 @@ void				key_toggle(t_keys *key, int keycode, int toggle);
 /*
 ** utils.c
 */
-t_point				new_point(int x, int y, int z, int color);
+t_3dpoint			new_3dpoint(int x, int y, int z, int color);
+t_2dpoint			new_2dpoint(int x, int y, int color);
+t_2dpoint			new_2dp_nc(int x, int y);
 void				error(char *msg);
 
 #endif

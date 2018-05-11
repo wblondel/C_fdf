@@ -6,7 +6,7 @@
 /*   By: wblondel <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/09 14:46:58 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 17:36:52 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 18:23:25 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,7 +54,7 @@ static int		draw_pixel(int y, int x, int color, int *pixels)
 **		https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#C
 */
 
-void			draw_line(t_point point0, t_point point1, int *pixels)
+void			draw_line(t_3dpoint point0, t_3dpoint point1, int *pixels)
 {
 	int		v[6];
 
@@ -92,15 +92,15 @@ void			draw_line(t_point point0, t_point point1, int *pixels)
 **		pixels: our array of pixels.
 */
 
-void			draw_rectangle(t_point point0, t_point point1, int *pixels)
+void			draw_rectangle(t_3dpoint point0, t_3dpoint point1, int *pixels)
 {
 	int		y_start;
 
 	y_start = point0.y;
 	while (y_start <= point1.y)
 	{
-		draw_line(new_point(point0.x, y_start, 0, 0x5856d6),
-				new_point(point1.x, y_start, 0, 0x5856d6), pixels);
+		draw_line(new_3dpoint(point0.x, y_start, 0, 0x5856d6),
+				new_3dpoint(point1.x, y_start, 0, 0x5856d6), pixels);
 		y_start++;
 	}
 }

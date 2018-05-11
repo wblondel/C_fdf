@@ -6,7 +6,7 @@
 /*   By: wblondel <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/09 14:19:47 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 15:45:07 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 18:44:22 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,9 +26,9 @@
 **		Returns a new Point object
 */
 
-t_point		new_point(int x, int y, int z, int color)
+t_3dpoint	new_3dpoint(int x, int y, int z, int color)
 {
-	t_point point;
+	t_3dpoint point;
 
 	point.x = x;
 	point.y = y;
@@ -37,11 +37,25 @@ t_point		new_point(int x, int y, int z, int color)
 	return (point);
 }
 
+t_2dpoint	new_2dpoint(int x, int y, int color)
+{
+	t_2dpoint point;
+
+	point.x = x;
+	point.y = y;
+	point.color = color;
+	return (point);
+}
+
+t_2dpoint	new_2dp_nc(int x, int y)
+{
+	return (new_2dpoint(x, y, WHITE));
+}
+
 /*
 ** Function:	error
 ** ------------------
 **		Prints an error message and exits with error code 1.
-**
 */
 
 void		error(char *msg)

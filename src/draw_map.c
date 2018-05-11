@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:42:45 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/10 18:14:07 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 18:18:55 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,8 @@
 **		map: our map.
 */
 
-static void		draw_horizontal_lines(int *pixels, t_point *points, t_map *map)
+static void		draw_horizontal_lines(int *pixels, t_3dpoint *points,
+		t_map *map)
 {
 	int		i;
 	int		j;
@@ -60,7 +61,7 @@ static void		draw_horizontal_lines(int *pixels, t_point *points, t_map *map)
 **		map: our map.
 */
 
-static void		draw_vertical_lines(int *pixels, t_point *points, t_map *map)
+static void		draw_vertical_lines(int *pixels, t_3dpoint *points, t_map *map)
 {
 	int		i;
 	int		j;
@@ -97,7 +98,7 @@ static void		draw_vertical_lines(int *pixels, t_point *points, t_map *map)
 **		map: our map.
 */
 
-void			draw_map(int *pixels, t_point *points, t_map *map)
+void			draw_map(int *pixels, t_3dpoint *points, t_map *map)
 {
 	draw_horizontal_lines(pixels, points, map);
 	draw_vertical_lines(pixels, points, map);
