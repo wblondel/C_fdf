@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 13:25:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 18:22:43 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 20:45:00 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,10 +30,10 @@ static void		to_isometric_2d(t_3dpoint *point)
 	x = point->x;
 	y = point->y;
 	z = point->z;
-	point->x = x * cos(DEGTORAD(30)) + y * cos(DEGTORAD(30 + 120))
-									+ z * cos(DEGTORAD(30 - 120));
-	point->y = x * sin(DEGTORAD(30)) + y * sin(DEGTORAD(30 + 120))
-									+ z * sin(DEGTORAD(30 - 120));
+	point->x = ceil(x * cos(DEGTORAD(30.0)) + y * cos(DEGTORAD(30.0 + 120.0))
+									+ z * cos(DEGTORAD(30.0 - 120.0)));
+	point->y = ceil(x * sin(DEGTORAD(30.0)) + y * sin(DEGTORAD(30.0 + 120.0))
+									+ z * sin(DEGTORAD(30.0 - 120.0)));
 }
 
 /*
