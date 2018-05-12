@@ -6,7 +6,7 @@
 /*   By: wblondel <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/05/09 14:46:58 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 22:14:42 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/11 23:05:38 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,14 +27,14 @@
 **			 1 if the coordinates are out of the window.
 */
 
-static int	draw_pixel(int y, int x, int color, int *pixels)
+static int	draw_pixel(t_3dpoint point, int *pixels)
 {
 	int		ipixel;
 
-	ipixel = y * W_WIDTH + x;
-	if (y < W_HEIGHT && y > 0 && x < W_WIDTH && x > 0)
+	ipixel = point.y * W_WIDTH + point.x;
+	if (point.y < W_HEIGHT && point.y > 0 && point.x < W_WIDTH && point.x > 0)
 	{
-		pixels[ipixel] = color;
+		pixels[ipixel] = point.color;
 		return (0);
 	}
 	return (-1);
@@ -65,7 +65,7 @@ void		draw_line(t_3dpoint point0, t_3dpoint point1, int *pixels)
 	v[4] = (v[0] > v[2] ? v[0] : -v[2]) / 2;
 	while (1)
 	{
-		draw_pixel(point0.y, point0.x, point0.color, pixels);
+		draw_pixel(point0, pixels);
 		if (point0.x == point1.x && point0.y == point1.y)
 			break ;
 		v[5] = v[4];
