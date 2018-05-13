@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/13 22:09:50 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/13 22:26:33 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,18 +23,14 @@
 # include "libft/basics/strings.h"
 # include "libft/basics/numbers.h"
 # include "libft/utils/file.h"
+# include "keys.h"
+# include "clicks.h"
+# include "mlx.h"
 # include <stdlib.h>
-# include <stdio.h>
-# include <errno.h>
 # include <math.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include "mlx.h"
-# include "keys.h"
-# include "clicks.h"
-
 # include <time.h>
-# include <stdint.h>
 
 /*
 ** Constants
