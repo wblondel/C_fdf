@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:58:06 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 22:12:59 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/13 18:00:44 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,8 +25,8 @@
 
 void	cam_set_margin(t_cam *cam, int x, int y)
 {
-	cam->margin_x = x;
-	cam->margin_y = y;
+	cam->shiftx = x;
+	cam->shifty = y;
 }
 
 /*
@@ -56,9 +56,9 @@ void	cam_set_scale(t_cam *cam, int scale)
 **	height_multiplier: the height multiplier to set.
 */
 
-void	cam_set_height_multiplier(t_cam *cam, int height_multiplier)
+void	cam_set_height_multiplier(t_cam *cam, int alt_coeff)
 {
-	cam->height_multiplier = height_multiplier;
+	cam->alt_coeff = alt_coeff;
 }
 
 /*
@@ -72,8 +72,8 @@ void	cam_set_height_multiplier(t_cam *cam, int height_multiplier)
 
 void	cam_reset(t_cam *cam)
 {
-	cam->margin_x = 0;
-	cam->margin_y = 0;
+	cam->shiftx = 0;
+	cam->shifty = 0;
 	cam->scale = 50;
-	cam->height_multiplier = 1;
+	cam->alt_coeff = 1;
 }

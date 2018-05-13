@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 09:36:18 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 22:18:57 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/13 18:01:56 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,14 +23,14 @@
 
 static void	init_values(t_global *g)
 {
-	g->cam.margin_x = 0;
-	g->cam.margin_y = 0;
+	g->cam.shiftx = 0;
+	g->cam.shifty = 0;
 	g->cam.scale = 50;
-	g->cam.height_multiplier = 1;
+	g->cam.alt_coeff = 1;
 	g->map.width = -1;
 	g->map.height = 0;
-	g->map.depth_min = 0;
-	g->map.depth_max = 0;
+	g->map.alt_min = 2147483647;
+	g->map.alt_max = -2147483648;
 }
 
 /*

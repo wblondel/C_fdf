@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 13:25:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 22:12:31 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/13 18:57:15 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,6 +37,57 @@ static void		to_isometric_2d(t_3dpoint *point)
 }
 
 /*
+** Function:	alt2color
+** ----------------------
+**	Returns a color based on a point altitude.
+**
+**	alt: the point altitude.
+**	min_alt: the map's minimum altitude.
+**	max_alt: the map's maximum altitude.
+**
+**	Returns: a color as an int (RGB - hex).
+*/
+
+static int		alt2color(const int alt, const int min_alt, const int max_alt)
+{
+	int		color;
+
+	(void)alt;
+	(void)min_alt;
+	(void)max_alt;
+	color = 0x6379FF;
+	return (color);
+}
+
+/*
+** Function:	calc_colors
+** ------------------------
+**	Fill the color property of all points of the map.
+**
+**	map: our map struct.
+**	min_height: the min altitude of the map.
+**	max_height: the max altitude of the map.
+*/
+
+static void		calc_colors(t_map *map)
+{
+	int			i;
+	int			j;
+	t_3dpoint	*point;
+
+	i = -1;
+	while (++i < map->height)
+	{
+		j = -1;
+		while (++j < map->width)
+		{
+			point = &map->points[i * map->width + j];
+			point->color = alt2color(point->z, map->alt_min, map->alt_max);
+		}
+	}
+}
+
+/*
 ** Function:	calculate_points
 ** -----------------------------
 **	Calculates the coordinates of each point, based on the given scale
@@ -48,28 +99,24 @@ static void		to_isometric_2d(t_3dpoint *point)
 
 void			calculate_points(t_map *map, t_cam *cam)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
+	t_3dpoint	*point;
 
 	if (!map->points)
-		map->points = (t_3dpoint *)ft_memalloc(map->width * map->height *
-															sizeof(t_3dpoint));
-	i = 0;
-	while (i < map->height)
+		map->points = ft_memalloc(map->width * map->height * sizeof(t_3dpoint));
+	i = -1;
+	while (++i < map->height)
 	{
-		j = 0;
-		while (j < map->width)
+		j = -1;
+		while (++j < map->width)
 		{
-			map->points[i * map->width + j].x = j * cam->scale +
-								cam->margin_x + cam->margin_y + W_WIDTH / 2;
-			map->points[i * map->width + j].y = i * cam->scale +
-								cam->margin_y - cam->margin_x;
-			map->points[i * map->width + j].z = map->file[i][j] * cam->scale *
-								((float)cam->height_multiplier / 30);
-			map->points[i * map->width + j].color = 0x6379FF;
-			to_isometric_2d(&map->points[i * map->width + j]);
-			j++;
+			point = &map->points[i * map->width + j];
+			point->x = j * cam->scale + cam->shiftx + cam->shifty + W_WIDTH / 2;
+			point->y = i * cam->scale + cam->shifty - cam->shiftx;
+			point->z = map->file[i][j] * cam->scale * (cam->alt_coeff / 30);
+			to_isometric_2d(point);
 		}
-		i++;
 	}
+	calc_colors(map);
 }

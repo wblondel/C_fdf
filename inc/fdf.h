@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/08 05:54:33 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 22:20:52 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/13 22:09:50 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -73,10 +73,10 @@ typedef struct		s_mouse
 
 typedef struct		s_cam
 {
-	int				margin_x;
-	int				margin_y;
+	int				shiftx;
+	int				shifty;
 	unsigned char	scale;
-	int				height_multiplier;
+	float			alt_coeff;
 }					t_cam;
 
 /*
@@ -111,8 +111,8 @@ typedef struct		s_map
 {
 	int				width;
 	int				height;
-	int				depth_min;
-	int				depth_max;
+	int				alt_min;
+	int				alt_max;
 	int				**file;
 	t_3dpoint		*points;
 }					t_map;

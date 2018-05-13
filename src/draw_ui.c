@@ -6,7 +6,7 @@
 /*   By: wblondel <wblondel@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/01/24 20:37:40 by wblondel     #+#   ##    ##    #+#       */
-/*   Updated: 2018/05/11 22:32:56 by wblondel    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/05/13 18:01:03 by wblondel    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,7 @@ static void		draw_ui_1(t_global *g)
 	char	*mousex;
 	char	*mousey;
 
-	height_mult = ft_itoa(g->cam.height_multiplier);
+	height_mult = ft_itoa(g->cam.alt_coeff);
 	scale = ft_itoa(g->cam.scale);
 	mousex = ft_itoa(g->mouse.x);
 	mousey = ft_itoa(g->mouse.y);
@@ -74,8 +74,8 @@ static void		draw_ui_2(t_global *g)
 	char	*cam_margin_y;
 	char	*t_mlx_create_image;
 
-	cam_margin_x = ft_itoa(g->cam.margin_x);
-	cam_margin_y = ft_itoa(g->cam.margin_y);
+	cam_margin_x = ft_itoa(g->cam.shiftx);
+	cam_margin_y = ft_itoa(g->cam.shifty);
 	t_mlx_create_image = ft_itoa(g->ts_mlx_create_image);
 	mlx_sp(g, new_2dp_nc(120, W_HEIGHT - 30), WHITE, "Margin X:");
 	mlx_sp(g, new_2dp_nc(220, W_HEIGHT - 30), WHITE, cam_margin_x);
